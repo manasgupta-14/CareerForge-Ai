@@ -41,10 +41,6 @@ const Navbar = () => {
                     </Link>
                 </div>
 
-                <button className="menu-btn">
-                    ☰
-                </button>
-
             </div>
 
         </header>

@@ -90,28 +90,3 @@ body {
     background: #1d4ed8;
 }
 
-.menu-btn {
-    display: none;
-    border: none;
-    background: transparent;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-/* Responsive */
-
-@media(max-width:992px) {
-
-    .nav-links,
-    .auth-buttons {
-        display: none;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .container {
-        padding: 15px 20px;
-    }
-}
