@@ -1,0 +1,211 @@
+.categories {
+
+    width: 100%;
+
+    padding: 90px 8%;
+
+    background: #f8fbff;
+
+}
+
+/* Heading */
+
+.categories-heading {
+
+    text-align: center;
+
+    max-width: 720px;
+
+    margin: auto;
+
+    margin-bottom: 60px;
+
+}
+
+.categories-heading span {
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+.categories-heading h2 {
+
+    margin: 15px 0;
+
+    font-size: 42px;
+
+    color: #111827;
+
+}
+
+.categories-heading p {
+
+    color: #6b7280;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+}
+
+/* Grid */
+
+.categories-grid {
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 30px;
+
+}
+
+/* Card */
+
+.category-card {
+
+    background: #fff;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+
+    transition: .35s;
+
+}
+
+.category-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 20px 40px rgba(37, 99, 235, .18);
+
+}
+
+.category-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #e8f0ff;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 34px;
+
+    margin-bottom: 22px;
+
+}
+
+.category-card h3 {
+
+    font-size: 22px;
+
+    color: #111827;
+
+    margin-bottom: 10px;
+
+}
+
+.category-card p {
+
+    color: #6b7280;
+
+    margin-bottom: 20px;
+
+    font-size: 15px;
+
+}
+
+.category-card button {
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.category-card button:hover {
+
+    background: #1d4ed8;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px) {
+
+    .categories-heading h2 {
+
+        font-size: 32px;
+
+    }
+
+    .categories-heading p {
+
+        font-size: 15px;
+
+    }
+
+    .category-card {
+
+        padding: 28px;
+
+    }
+
+}
+
+@media(max-width:480px) {
+
+    .categories {
+
+        padding: 70px 20px;
+
+    }
+
+    .categories-heading h2 {
+
+        font-size: 28px;
+
+    }
+
+    .category-card h3 {
+
+        font-size: 20px;
+
+    }
+
+}
