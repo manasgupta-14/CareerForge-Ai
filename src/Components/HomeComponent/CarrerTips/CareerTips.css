@@ -1,0 +1,143 @@
+.career-tips {
+    width: 100%;
+    padding: 90px 8%;
+    background: #ffffff;
+}
+
+/* Heading */
+
+.career-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+.career-heading span {
+    color: #2563eb;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.career-heading h2 {
+    margin: 15px 0;
+    font-size: 42px;
+    color: #111827;
+}
+
+.career-heading p {
+    color: #6b7280;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+/* Cards */
+
+.tips-container {
+    max-width: 1300px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.tip-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+    transition: .35s;
+}
+
+.tip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, .15);
+}
+
+.tip-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.tip-content {
+    padding: 25px;
+}
+
+.tip-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.tip-info span {
+    background: #e8f0ff;
+    color: #2563eb;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tip-info small {
+    color: #6b7280;
+}
+
+.tip-content h3 {
+    font-size: 22px;
+    color: #111827;
+    margin-bottom: 15px;
+}
+
+.tip-content p {
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.tip-content button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.tip-content button:hover {
+    background: #1d4ed8;
+}
+
+/* Responsive */
+
+@media(max-width:768px) {
+
+    .career-heading h2 {
+        font-size: 32px;
+    }
+
+    .career-heading p {
+        font-size: 15px;
+    }
+
+}
+
+@media(max-width:480px) {
+
+    .career-tips {
+        padding: 70px 20px;
+    }
+
+    .career-heading h2 {
+        font-size: 28px;
+    }
+
+    .tip-content h3 {
+        font-size: 20px;
+    }
+
+}
