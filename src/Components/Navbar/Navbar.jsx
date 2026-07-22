@@ -1,50 +1,142 @@
-import { Link } from "react-router-dom";
-import "./Navbar.css";
-
+import React, { useState } from 'react'
+import { Link } from "react-router-dom"
+import "./Navbar.css"
 const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false)
     return (
-        <header className="header">
+        <>
+            <header className="header">
+                <div className="container">
+                    <Link to="/" className="logo">Carrer<span>Forge</span> AI</Link>
 
-            <div className="container">
+                    <nav className={menuOpen ? "nav-links active" : "nav-links"}>
+                        <ul>
 
-                <Link to="/" className="logo">
-                    Career<span>Forge</span> AI
-                </Link>
+                            <li>
+                                <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+                            </li>
 
-                <nav className="nav-links">
-                    <Link to="/">Home</Link>
-  
-                    <Link to="/jobs">Jobs</Link>
+                            <li className="dropdown">
+                                <Link onClick={() => setMenuOpen(false)}>Jobs ▾</Link>
 
-                    <Link to="/resume-builder">
-                        AI Resume Builder
-                    </Link>
+                                <div className="dropdown-menu">
 
-                    <Link to="/code-editor">
-                        Online Code Editor
-                    </Link>
+                                    <Link to="/jobs/apply-jobs">Apply Jobs</Link>
 
-                    <Link to="/quiz">Quiz</Link>
+                                    <Link to="/jobs/internship">Internship</Link>
 
-                    <Link to="/about">About</Link>
+                                </div>
+                            </li>
 
-                    <Link to="/contact">Contact</Link>
-                </nav>
+                            <li className="dropdown">
 
-                <div className="auth-buttons">
-                    <Link to="/login" className="login-btn">
-                        Login
-                    </Link>
+                                <Link >
+                                    Resume Builder ▾
+                                </Link>
 
-                    <Link to="/register" className="register-btn">
-                        Register
-                    </Link>
+                                <div className="dropdown-menu">
+
+                                    <Link to="/resume-builder/create">Create Resume</Link>
+
+                                    <Link to="/resume-builder/my-resumes">My Resumes</Link>
+
+                                    <Link to="/resume-builder/templates">Resume Templates</Link>
+
+                                    <Link to="/resume-builder/ats-score">ATS Score</Link>
+
+                                    <Link to="/resume-builder/ai-suggestions">
+                                        AI Suggestions
+                                    </Link>
+
+                                    <Link to="/resume-builder/analyzer">
+                                        Resume Analyzer
+                                    </Link>
+
+                                </div>
+
+                            </li>
+
+                            <li className="dropdown">
+
+                                <Link to="/code-editor">
+                                    Code Editor ▾
+                                </Link>
+
+                                <div className="dropdown-menu">
+
+                                    <Link to="/code-editor/html-css">
+                                        HTML/CSS Editor
+                                    </Link>
+
+                                    <Link to="/code-editor/javascript">
+                                        JavaScript Editor
+                                    </Link>
+
+                                    <Link to="/code-editor/react">
+                                        React Editor
+                                    </Link>
+
+                                    <Link to="/code-editor/saved">
+                                        Saved Codes
+                                    </Link>
+
+                                </div>
+
+                            </li>
+
+                            <li className="dropdown">
+
+                                <Link to="/quiz">
+                                    Quiz ▾
+                                </Link>
+
+                                <div className="dropdown-menu">
+
+                                    <Link to="/quiz/html">HTML Quiz</Link>
+
+                                    <Link to="/quiz/css">CSS Quiz</Link>
+
+                                    <Link to="/quiz/javascript">JavaScript Quiz</Link>
+
+                                    <Link to="/quiz/react">React Quiz</Link>
+
+                                    <Link to="/quiz/mock-interview">
+                                        Mock Interview
+                                    </Link>
+
+                                </div>
+
+                            </li>
+
+                            <li>
+                                <Link to="/about">About</Link>
+                            </li>
+
+                            <li>
+                                <Link to="/contact">Contact</Link>
+                            </li>
+
+                        </ul>
+
+                        <div className="mobile-buttons">
+                            <Link to="/login" className="login-btn">Login</Link>
+                            <Link to="/register" className="register-btn">Register</Link>
+                        </div>
+
+                    </nav>
+
+                    <div className="desktop-buttons">
+                        <Link to="/login" className='login-btn'>Login</Link>
+                        <Link to="/register" className='register-btn'>Register</Link>
+                    </div>
+
+                    <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+                        {menuOpen ? "✕" : "☰"}
+                    </div>
                 </div>
+            </header>
+        </>
+    )
+}
 
-            </div>
-
-        </header>
-    );
-};
-
-export default Navbar;
+export default Navbar

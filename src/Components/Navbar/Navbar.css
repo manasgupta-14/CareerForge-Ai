@@ -20,11 +20,12 @@ body {
 .container {
     max-width: 1350px;
     margin: auto;
-    padding: 15px 30px;
+    padding: 18px 25px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 .logo {
@@ -47,7 +48,7 @@ body {
 .nav-links a {
     text-decoration: none;
     color: #374151;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     transition: .3s;
 }
@@ -56,7 +57,51 @@ body {
     color: #2563eb;
 }
 
-.auth-buttons {
+.nav-links ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 190px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: .3s;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    padding: 10px 10px;
+    white-space: nowrap;
+    font-size: 15px;
+}
+
+.dropdown-menu a:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+.desktop-buttons {
     display: flex;
     gap: 12px;
 }
@@ -90,3 +135,69 @@ body {
     background: #1d4ed8;
 }
 
+.mobile-buttons {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    user-select: none;
+}
+
+@media(max-width:1120px) {
+    .desktop-buttons {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+        padding: 30px 0;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, .08);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: .35;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .mobile-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .mobile-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width:576px) {
+    .logo {
+        font-size: 22px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
