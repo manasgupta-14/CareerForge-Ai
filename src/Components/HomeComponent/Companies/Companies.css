@@ -1,0 +1,191 @@
+.companies {
+
+    width: 100%;
+
+    padding: 90px 8%;
+
+    background: #ffffff;
+
+}
+
+/* Heading */
+
+.companies-heading {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    text-align: center;
+
+    margin-bottom: 60px;
+
+}
+
+.companies-heading span {
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+.companies-heading h2 {
+
+    font-size: 42px;
+
+    margin: 15px 0;
+
+    color: #111827;
+
+}
+
+.companies-heading p {
+
+    color: #6b7280;
+
+    line-height: 1.7;
+
+    font-size: 17px;
+
+}
+
+/* Grid */
+
+.companies-grid {
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 30px;
+
+}
+
+/* Card */
+
+.company-card {
+
+    background: #fff;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+
+    transition: .35s;
+
+}
+
+.company-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 20px 40px rgba(37, 99, 235, .15);
+
+}
+
+.company-card img {
+
+    width: 120px;
+
+    height: 60px;
+
+    object-fit: contain;
+
+    margin-bottom: 20px;
+
+}
+
+.company-card h3 {
+
+    color: #111827;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+
+}
+
+.company-card p {
+
+    color: #6b7280;
+
+    margin-bottom: 20px;
+
+}
+
+.company-card button {
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.company-card button:hover {
+
+    background: #1d4ed8;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px) {
+
+    .companies-heading h2 {
+
+        font-size: 32px;
+
+    }
+
+    .companies-heading p {
+
+        font-size: 15px;
+
+    }
+
+    .company-card {
+
+        padding: 28px;
+
+    }
+
+}
+
+@media(max-width:480px) {
+
+    .companies {
+
+        padding: 70px 20px;
+
+    }
+
+    .companies-heading h2 {
+
+        font-size: 28px;
+
+    }
+
+}
