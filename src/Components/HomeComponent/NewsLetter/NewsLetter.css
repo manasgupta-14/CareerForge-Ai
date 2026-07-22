@@ -1,0 +1,196 @@
+.newsletter {
+
+    width: 100%;
+
+    padding: 90px 8%;
+
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+
+}
+
+.newsletter-container {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 50px;
+
+    color: #fff;
+
+}
+
+.newsletter-content {
+
+    flex: 1;
+
+}
+
+.newsletter-content span {
+
+    display: inline-block;
+
+    background: rgba(255, 255, 255, .15);
+
+    padding: 8px 16px;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 20px;
+
+}
+
+.newsletter-content h2 {
+
+    font-size: 42px;
+
+    line-height: 1.3;
+
+    margin-bottom: 20px;
+
+}
+
+.newsletter-content p {
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #e5e7eb;
+
+}
+
+/* Form */
+
+.newsletter-form {
+
+    flex: 1;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+}
+
+.newsletter-form input {
+
+    flex: 1;
+
+    padding: 18px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 16px;
+
+}
+
+.newsletter-form button {
+
+    padding: 18px 28px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #111827;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.newsletter-form button:hover {
+
+    background: #000;
+
+}
+
+/* Responsive */
+
+@media(max-width:992px) {
+
+    .newsletter-container {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+    .newsletter-form {
+
+        width: 100%;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .newsletter-content h2 {
+
+        font-size: 32px;
+
+    }
+
+    .newsletter-content p {
+
+        font-size: 15px;
+
+    }
+
+    .newsletter-form {
+
+        flex-direction: column;
+
+    }
+
+    .newsletter-form input,
+    .newsletter-form button {
+
+        width: 100%;
+
+    }
+
+}
+
+@media(max-width:480px) {
+
+    .newsletter {
+
+        padding: 70px 20px;
+
+    }
+
+    .newsletter-content h2 {
+
+        font-size: 28px;
+
+    }
+
+}
