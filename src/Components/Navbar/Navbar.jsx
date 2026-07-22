@@ -1,142 +1,242 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom"
-import "./Navbar.css"
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import {
+    Menu,
+    X,
+    ChevronDown,
+    BriefcaseBusiness,
+} from "lucide-react";
+import "./Navbar.css";
+
 const Navbar = () => {
-    const [menuOpen, setMenuOpen] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
+
     return (
-        <>
-            <header className="header">
-                <div className="container">
-                    <Link to="/" className="logo">Carrer<span>Forge</span> AI</Link>
+        <header className="header">
+            <div className="container">
 
-                    <nav className={menuOpen ? "nav-links active" : "nav-links"}>
-                        <ul>
+                {/* Logo */}
+                <Link to="/" className="logo" onClick={closeMenu}>
+                    <BriefcaseBusiness size={28} />
+                    <span className="logo-text">
+                        Career<span>Forge</span> AI
+                    </span>
+                </Link>
 
-                            <li>
-                                <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-                            </li>
+                {/* Navigation */}
+                <nav className={menuOpen ? "nav-links active" : "nav-links"}>
+                    <ul>
 
-                            <li className="dropdown">
-                                <Link onClick={() => setMenuOpen(false)}>Jobs ▾</Link>
+                        <li>
+                            <NavLink to="/" onClick={closeMenu}>
+                                Home
+                            </NavLink>
+                        </li>
 
-                                <div className="dropdown-menu">
+                        {/* Jobs */}
+                        <li className="dropdown">
+                            <NavLink to="/jobs" onClick={closeMenu}>
+                                Jobs <ChevronDown size={16} />
+                            </NavLink>
 
-                                    <Link to="/jobs/apply-jobs">Apply Jobs</Link>
+                            <div className="dropdown-menu">
+                                <NavLink to="/jobs/apply-jobs" onClick={closeMenu}>
+                                    Apply Jobs
+                                </NavLink>
 
-                                    <Link to="/jobs/internship">Internship</Link>
+                                <NavLink to="/jobs/internship" onClick={closeMenu}>
+                                    Internship
+                                </NavLink>
 
-                                </div>
-                            </li>
+                                <NavLink to="/jobs/work-from-home" onClick={closeMenu}>
+                                    Work From Home
+                                </NavLink>
+                                
+                            </div>
+                        </li>
 
-                            <li className="dropdown">
+                        {/* Resume */}
+                        <li className="dropdown">
+                            <NavLink to="/resume-builder" onClick={closeMenu}>
+                                Resume Builder <ChevronDown size={16} />
+                            </NavLink>
 
-                                <Link >
-                                    Resume Builder ▾
-                                </Link>
+                            <div className="dropdown-menu">
+                                <NavLink
+                                    to="/resume-builder/create"
+                                    onClick={closeMenu}
+                                >
+                                    Create Resume
+                                </NavLink>
 
-                                <div className="dropdown-menu">
+                                <NavLink
+                                    to="/resume-builder/my-resumes"
+                                    onClick={closeMenu}
+                                >
+                                    My Resumes
+                                </NavLink>
 
-                                    <Link to="/resume-builder/create">Create Resume</Link>
+                                <NavLink
+                                    to="/resume-builder/templates"
+                                    onClick={closeMenu}
+                                >
+                                    Resume Templates
+                                </NavLink>
 
-                                    <Link to="/resume-builder/my-resumes">My Resumes</Link>
+                                <NavLink
+                                    to="/resume-builder/ats-score"
+                                    onClick={closeMenu}
+                                >
+                                    ATS Score
+                                </NavLink>
 
-                                    <Link to="/resume-builder/templates">Resume Templates</Link>
+                                <NavLink
+                                    to="/resume-builder/ai-suggestions"
+                                    onClick={closeMenu}
+                                >
+                                    AI Suggestions
+                                </NavLink>
 
-                                    <Link to="/resume-builder/ats-score">ATS Score</Link>
+                                <NavLink
+                                    to="/resume-builder/analyzer"
+                                    onClick={closeMenu}
+                                >
+                                    Resume Analyzer
+                                </NavLink>
+                            </div>
+                        </li>
 
-                                    <Link to="/resume-builder/ai-suggestions">
-                                        AI Suggestions
-                                    </Link>
+                        {/* Code Editor */}
+                        <li className="dropdown">
+                            <NavLink to="/code-editor" onClick={closeMenu}>
+                                Code Editor <ChevronDown size={16} />
+                            </NavLink>
 
-                                    <Link to="/resume-builder/analyzer">
-                                        Resume Analyzer
-                                    </Link>
+                            <div className="dropdown-menu">
+                                <NavLink
+                                    to="/code-editor/html-css"
+                                    onClick={closeMenu}
+                                >
+                                    HTML / CSS
+                                </NavLink>
 
-                                </div>
+                                <NavLink
+                                    to="/code-editor/javascript"
+                                    onClick={closeMenu}
+                                >
+                                    JavaScript
+                                </NavLink>
 
-                            </li>
+                                <NavLink
+                                    to="/code-editor/react"
+                                    onClick={closeMenu}
+                                >
+                                    React
+                                </NavLink>
 
-                            <li className="dropdown">
+                                <NavLink
+                                    to="/code-editor/saved"
+                                    onClick={closeMenu}
+                                >
+                                    Saved Codes
+                                </NavLink>
+                            </div>
+                        </li>
 
-                                <Link to="/code-editor">
-                                    Code Editor ▾
-                                </Link>
+                        {/* Quiz */}
+                        <li className="dropdown">
+                            <NavLink to="/quiz" onClick={closeMenu}>
+                                Quiz <ChevronDown size={16} />
+                            </NavLink>
 
-                                <div className="dropdown-menu">
+                            <div className="dropdown-menu">
+                                <NavLink to="/quiz/html" onClick={closeMenu}>
+                                    HTML Quiz
+                                </NavLink>
 
-                                    <Link to="/code-editor/html-css">
-                                        HTML/CSS Editor
-                                    </Link>
+                                <NavLink to="/quiz/css" onClick={closeMenu}>
+                                    CSS Quiz
+                                </NavLink>
 
-                                    <Link to="/code-editor/javascript">
-                                        JavaScript Editor
-                                    </Link>
+                                <NavLink
+                                    to="/quiz/javascript"
+                                    onClick={closeMenu}
+                                >
+                                    JavaScript Quiz
+                                </NavLink>
 
-                                    <Link to="/code-editor/react">
-                                        React Editor
-                                    </Link>
+                                <NavLink to="/quiz/react" onClick={closeMenu}>
+                                    React Quiz
+                                </NavLink>
 
-                                    <Link to="/code-editor/saved">
-                                        Saved Codes
-                                    </Link>
+                                <NavLink
+                                    to="/quiz/mock-interview"
+                                    onClick={closeMenu}
+                                >
+                                    Mock Interview
+                                </NavLink>
+                            </div>
+                        </li>
 
-                                </div>
+                        <li>
+                            <NavLink to="/about" onClick={closeMenu}>
+                                About
+                            </NavLink>
+                        </li>
 
-                            </li>
+                        <li>
+                            <NavLink to="/contact" onClick={closeMenu}>
+                                Contact
+                            </NavLink>
+                        </li>
+                    </ul>
 
-                            <li className="dropdown">
+                    {/* Mobile Buttons */}
+                    <div className="mobile-buttons">
+                        <NavLink
+                            to="/login"
+                            className="login-btn"
+                            onClick={closeMenu}
+                        >
+                            Login
+                        </NavLink>
 
-                                <Link to="/quiz">
-                                    Quiz ▾
-                                </Link>
-
-                                <div className="dropdown-menu">
-
-                                    <Link to="/quiz/html">HTML Quiz</Link>
-
-                                    <Link to="/quiz/css">CSS Quiz</Link>
-
-                                    <Link to="/quiz/javascript">JavaScript Quiz</Link>
-
-                                    <Link to="/quiz/react">React Quiz</Link>
-
-                                    <Link to="/quiz/mock-interview">
-                                        Mock Interview
-                                    </Link>
-
-                                </div>
-
-                            </li>
-
-                            <li>
-                                <Link to="/about">About</Link>
-                            </li>
-
-                            <li>
-                                <Link to="/contact">Contact</Link>
-                            </li>
-
-                        </ul>
-
-                        <div className="mobile-buttons">
-                            <Link to="/login" className="login-btn">Login</Link>
-                            <Link to="/register" className="register-btn">Register</Link>
-                        </div>
-
-                    </nav>
-
-                    <div className="desktop-buttons">
-                        <Link to="/login" className='login-btn'>Login</Link>
-                        <Link to="/register" className='register-btn'>Register</Link>
+                        <NavLink
+                            to="/register"
+                            className="register-btn"
+                            onClick={closeMenu}
+                        >
+                            Register
+                        </NavLink>
                     </div>
+                </nav>
 
-                    <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
-                        {menuOpen ? "✕" : "☰"}
-                    </div>
+                {/* Desktop Buttons */}
+                <div className="desktop-buttons">
+                    <NavLink to="/login" className="login-btn">
+                        Login
+                    </NavLink>
+
+                    <NavLink to="/register" className="register-btn">
+                        Register
+                    </NavLink>
                 </div>
-            </header>
-        </>
-    )
-}
 
-export default Navbar
+                {/* Mobile Menu Icon */}
+                <div
+                    className="menu-icon"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                >
+                    {menuOpen ? <X size={30} /> : <Menu size={30} />}
+                </div>
+
+            </div>
+        </header>
+    );
+};
+
+export default Navbar;
