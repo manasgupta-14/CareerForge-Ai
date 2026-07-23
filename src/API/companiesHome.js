@@ -6,7 +6,7 @@ import adobeLogo from "../assets/adobe-logo.png"
 import infosysLogo from "../assets/infosys-logo.png"
 import tcsLogo from "../assets/tcs-logo.png"
 import wiproLogo from "../assets/wipro-logo.png"
-// import googleLogo from "../assets/google-logo.png"
+import flipkartLogo from "../assets/flipkart-logo.png"
 
 const companies = [
     {
@@ -59,9 +59,9 @@ const companies = [
     },
      {
         id:9,
-        logo: "",
-        name: "Wipro",
-        jobs: "7 Jobs",
+        logo: flipkartLogo,
+        name: "Flipkart",
+        jobs: "10 Jobs",
     },
 ]
 
