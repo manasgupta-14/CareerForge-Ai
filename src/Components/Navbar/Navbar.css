@@ -297,7 +297,7 @@ ul {
    Responsive
 ========================================== */
 
-@media (max-width: 992px) {
+@media (max-width: 1300px) {
 
     .desktop-buttons {
         display: none;
