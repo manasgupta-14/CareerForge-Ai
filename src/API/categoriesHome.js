@@ -47,6 +47,12 @@ const categories = [
         title: "Cyber Security",
         jobs: "98 Jobs",
     },
+     {
+        id: 9,
+        icon: "🔐",
+        title: "Cyber Security",
+        jobs: "98 Jobs",
+    },
 ];
 
 export default categories;
