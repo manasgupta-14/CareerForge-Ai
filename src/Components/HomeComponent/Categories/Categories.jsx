@@ -1,89 +1,44 @@
-import "./Categories.css";
-
-const categories = [
-    {
-        icon: "💻",
-        title: "Frontend",
-        jobs: "245 Jobs",
-    },
-    {
-        icon: "🖥️",
-        title: "Backend",
-        jobs: "198 Jobs",
-    },
-    {
-        icon: "🚀",
-        title: "Full Stack",
-        jobs: "320 Jobs",
-    },
-    {
-        icon: "🎨",
-        title: "UI / UX",
-        jobs: "112 Jobs",
-    },
-    {
-        icon: "🤖",
-        title: "AI / ML",
-        jobs: "158 Jobs",
-    },
-    {
-        icon: "☁️",
-        title: "Cloud",
-        jobs: "135 Jobs",
-    },
-    {
-        icon: "📊",
-        title: "Data Analyst",
-        jobs: "174 Jobs",
-    },
-    {
-        icon: "🔐",
-        title: "Cyber Security",
-        jobs: "98 Jobs",
-    },
-];
+import React, { useEffect, useState } from 'react'
+import categoriesHome from "../../../API/categoriesHome"
+import "./Categories.css"
 
 const Categories = () => {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        setCategories(categoriesHome)
+    }, []);
+
     return (
-        <section className="categories">
+        <>
+            <section className="categories">
+                <div className="categories-heading">
+                    <span>JOB CATEGORIES</span>
 
-            <div className="categories-heading">
+                    <h2>Browse Jobs by Category</h2>
 
-                <span>JOB CATEGORIES</span>
+                    <p>
+                        Discover thousands of opportunities across the most popular
+                        technology domains and start your career journey today.
+                    </p>
+                </div>
 
-                <h2>Browse Jobs by Category</h2>
+                <div className="categories-grid">
+                    {categories.map((category) => (
+                        <div className="category-card" key={category.id}>
+                            <div className="category-icon">
+                                {category.icon}
+                            </div>
 
-                <p>
-                    Discover thousands of opportunities across the most popular
-                    technology domains and start your career journey today.
-                </p>
-
-            </div>
-
-            <div className="categories-grid">
-
-                {categories.map((category, index) => (
-
-                    <div className="category-card" key={index}>
-
-                        <div className="category-icon">
-                            {category.icon}
+                            <h3>{category.title}</h3>
+                            <p>{category.jobs}</p>
+                            <button>Explore Jobs</button>
                         </div>
+                    ))}
+                </div>
+            </section>
+        </>
+    )
+}
 
-                        <h3>{category.title}</h3>
-
-                        <p>{category.jobs}</p>
-
-                        <button>Explore Jobs →</button>
-
-                    </div>
-
-                ))}
-
-            </div>
-
-        </section>
-    );
-};
-
-export default Categories;
+export default Categories
