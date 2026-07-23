@@ -1,11 +1,5 @@
-/* ==========================================
-   Google Font
-========================================== */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
-/* ==========================================
-   Reset
-========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -25,10 +19,6 @@ a {
 ul {
     list-style: none;
 }
-
-/* ==========================================
-   Header
-========================================== */
 
 .header {
     position: sticky;
@@ -60,10 +50,6 @@ ul {
     position: relative;
 }
 
-/* ==========================================
-   Logo
-========================================== */
-
 .logo {
     display: flex;
     align-items: center;
@@ -71,7 +57,7 @@ ul {
 
     color: #111827;
 
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 800;
 
     transition: .3s;
@@ -101,7 +87,7 @@ ul {
 .nav-links ul {
     display: flex;
     align-items: center;
-    gap: 34px;
+    gap: 23px;
 }
 
 .nav-links ul li {
@@ -293,11 +279,7 @@ ul {
     color: #2563eb;
 }
 
-/* ==========================================
-   Responsive
-========================================== */
-
-@media (max-width: 1300px) {
+@media (max-width: 1100px) {
 
     .desktop-buttons {
         display: none;
