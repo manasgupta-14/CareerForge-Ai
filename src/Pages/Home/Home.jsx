@@ -14,8 +14,8 @@ const Home = () => {
         <>
             <Hero />
             <Companies />
-            {/* <Categories />
-            <FeaturedJobs />
+            <Categories />
+            {/* <FeaturedJobs />
             <LatestJobs />
             <WhyChoose />
             <CareerTips />
