@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <>
             <Hero />
-            <Companies />
+            {/* <Companies />
             <Categories />
             <FeaturedJobs />
             <LatestJobs />
@@ -21,7 +21,7 @@ const Home = () => {
             <CareerTips />
             <Testimonials />
             <NewsLetter />
-            <Footer />
+            <Footer /> */}
         </>
     )
 };
