@@ -13,8 +13,8 @@ const Home = () => {
     return (
         <>
             <Hero />
-            {/* <Companies />
-            <Categories />
+            <Companies />
+            {/* <Categories />
             <FeaturedJobs />
             <LatestJobs />
             <WhyChoose />
