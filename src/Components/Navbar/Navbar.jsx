@@ -39,9 +39,9 @@ const Navbar = () => {
 
                         {/* Jobs */}
                         <li className="dropdown">
-                            <NavLink to="/jobs" onClick={closeMenu}>
+                            <button type="button" className="dropdown-title">
                                 Jobs <ChevronDown size={16} />
-                            </NavLink>
+                            </button>
 
                             <div className="dropdown-menu">
                                 <NavLink to="/jobs/apply-jobs" onClick={closeMenu}>
@@ -55,56 +55,37 @@ const Navbar = () => {
                                 <NavLink to="/jobs/work-from-home" onClick={closeMenu}>
                                     Work From Home
                                 </NavLink>
-                                
                             </div>
                         </li>
 
                         {/* Resume */}
                         <li className="dropdown">
-                            <NavLink to="/resume-builder" onClick={closeMenu}>
+                            <button type="button" className="dropdown-title">
                                 Resume Builder <ChevronDown size={16} />
-                            </NavLink>
+                            </button>
 
                             <div className="dropdown-menu">
-                                <NavLink
-                                    to="/resume-builder/create"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/resume-builder/create" onClick={closeMenu}>
                                     Create Resume
                                 </NavLink>
 
-                                <NavLink
-                                    to="/resume-builder/my-resumes"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/resume-builder/my-resumes" onClick={closeMenu}>
                                     My Resumes
                                 </NavLink>
 
-                                <NavLink
-                                    to="/resume-builder/templates"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/resume-builder/templates" onClick={closeMenu}>
                                     Resume Templates
                                 </NavLink>
 
-                                <NavLink
-                                    to="/resume-builder/ats-score"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/resume-builder/ats-score" onClick={closeMenu}>
                                     ATS Score
                                 </NavLink>
 
-                                <NavLink
-                                    to="/resume-builder/ai-suggestions"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/resume-builder/ai-suggestions" onClick={closeMenu}>
                                     AI Suggestions
                                 </NavLink>
 
-                                <NavLink
-                                    to="/resume-builder/analyzer"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/resume-builder/analyzer" onClick={closeMenu}>
                                     Resume Analyzer
                                 </NavLink>
                             </div>
@@ -112,36 +93,24 @@ const Navbar = () => {
 
                         {/* Code Editor */}
                         <li className="dropdown">
-                            <NavLink to="/code-editor" onClick={closeMenu}>
+                            <button type="button" className="dropdown-title">
                                 Code Editor <ChevronDown size={16} />
-                            </NavLink>
+                            </button>
 
                             <div className="dropdown-menu">
-                                <NavLink
-                                    to="/code-editor/html-css"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/code-editor/html-css" onClick={closeMenu}>
                                     HTML / CSS
                                 </NavLink>
 
-                                <NavLink
-                                    to="/code-editor/javascript"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/code-editor/javascript" onClick={closeMenu}>
                                     JavaScript
                                 </NavLink>
 
-                                <NavLink
-                                    to="/code-editor/react"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/code-editor/react" onClick={closeMenu}>
                                     React
                                 </NavLink>
 
-                                <NavLink
-                                    to="/code-editor/saved"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/code-editor/saved" onClick={closeMenu}>
                                     Saved Codes
                                 </NavLink>
                             </div>
@@ -149,9 +118,9 @@ const Navbar = () => {
 
                         {/* Quiz */}
                         <li className="dropdown">
-                            <NavLink to="/quiz" onClick={closeMenu}>
+                            <button type="button" className="dropdown-title">
                                 Quiz <ChevronDown size={16} />
-                            </NavLink>
+                            </button>
 
                             <div className="dropdown-menu">
                                 <NavLink to="/quiz/html" onClick={closeMenu}>
@@ -162,10 +131,7 @@ const Navbar = () => {
                                     CSS Quiz
                                 </NavLink>
 
-                                <NavLink
-                                    to="/quiz/javascript"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/quiz/javascript" onClick={closeMenu}>
                                     JavaScript Quiz
                                 </NavLink>
 
@@ -173,10 +139,7 @@ const Navbar = () => {
                                     React Quiz
                                 </NavLink>
 
-                                <NavLink
-                                    to="/quiz/mock-interview"
-                                    onClick={closeMenu}
-                                >
+                                <NavLink to="/quiz/mock-interview" onClick={closeMenu}>
                                     Mock Interview
                                 </NavLink>
                             </div>
