@@ -8,39 +8,123 @@ import Contact from "./Pages/Contact/Contact";
 
 function App() {
     return (
-        <>
-            <BrowserRouter>
+        <BrowserRouter>
 
-                <Navbar />
+            <Navbar />
 
-                <Routes>
-                    <Route path="/" element={<Home />} />
+            <Routes>
 
-                    <Route path="/jobs" element={<h1>Jobs</h1>} />
+                {/* Home */}
+                <Route path="/" element={<Home />} />
 
-                    <Route
-                        path="/resume-builder"
-                        element={<h1>AI Resume Builder</h1>}
-                    />
+                {/* Jobs */}
+                <Route
+                    path="/jobs/apply-jobs"
+                    element={<h1>Apply Jobs</h1>}
+                />
 
-                    <Route
-                        path="/code-editor"
-                        element={<h1>Online Code Editor</h1>}
-                    />
+                <Route
+                    path="/jobs/internship"
+                    element={<h1>Internship</h1>}
+                />
 
-                    <Route path="/quiz" element={<h1>Quiz</h1>} />
+                <Route
+                    path="/jobs/work-from-home"
+                    element={<h1>Work From Home</h1>}
+                />
 
-                    <Route path="/about" element={<About />} />
+                {/* Resume Builder */}
+                <Route
+                    path="/resume-builder/create"
+                    element={<h1>Create Resume</h1>}
+                />
 
-                    <Route path="/contact" element={<Contact />} />
+                <Route
+                    path="/resume-builder/my-resumes"
+                    element={<h1>My Resumes</h1>}
+                />
 
-                    <Route path="/login" element={<h1>Login</h1>} />
+                <Route
+                    path="/resume-builder/templates"
+                    element={<h1>Resume Templates</h1>}
+                />
 
-                    <Route path="/register" element={<h1>Register</h1>} />
-                </Routes>
+                <Route
+                    path="/resume-builder/ats-score"
+                    element={<h1>ATS Score</h1>}
+                />
 
-            </BrowserRouter>
-        </>
+                <Route
+                    path="/resume-builder/ai-suggestions"
+                    element={<h1>AI Suggestions</h1>}
+                />
+
+                <Route
+                    path="/resume-builder/analyzer"
+                    element={<h1>Resume Analyzer</h1>}
+                />
+
+                {/* Code Editor */}
+                <Route
+                    path="/code-editor/html-css"
+                    element={<h1>HTML / CSS Editor</h1>}
+                />
+
+                <Route
+                    path="/code-editor/javascript"
+                    element={<h1>JavaScript Editor</h1>}
+                />
+
+                <Route
+                    path="/code-editor/react"
+                    element={<h1>React Editor</h1>}
+                />
+
+                <Route
+                    path="/code-editor/saved"
+                    element={<h1>Saved Codes</h1>}
+                />
+
+                {/* Quiz */}
+                <Route
+                    path="/quiz/html"
+                    element={<h1>HTML Quiz</h1>}
+                />
+
+                <Route
+                    path="/quiz/css"
+                    element={<h1>CSS Quiz</h1>}
+                />
+
+                <Route
+                    path="/quiz/javascript"
+                    element={<h1>JavaScript Quiz</h1>}
+                />
+
+                <Route
+                    path="/quiz/react"
+                    element={<h1>React Quiz</h1>}
+                />
+
+                <Route
+                    path="/quiz/mock-interview"
+                    element={<h1>Mock Interview</h1>}
+                />
+
+                {/* Other Pages */}
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+
+                {/* Auth */}
+                <Route path="/login" element={<h1>Login</h1>} />
+                <Route path="/register" element={<h1>Register</h1>} />
+
+                {/* 404 Page */}
+                <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+
+            </Routes>
+
+        </BrowserRouter>
     );
 }
 
