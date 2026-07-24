@@ -5,6 +5,9 @@ import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
+import ApplyJobs from "./Components/JobsComponent/ApplyJobs/ApplyJobs";
+import Internship from "./Components/JobsComponent/Internship/Internship";
+import WorkFromHome from "./Components/JobsComponent/WorkFromHome/WorkFromHome";
 
 function App() {
     return (
@@ -20,17 +23,17 @@ function App() {
                 {/* Jobs */}
                 <Route
                     path="/jobs/apply-jobs"
-                    element={<h1>Apply Jobs</h1>}
+                    element={<ApplyJobs/>}
                 />
 
                 <Route
                     path="/jobs/internship"
-                    element={<h1>Internship</h1>}
+                    element={<Internship/>}
                 />
 
                 <Route
                     path="/jobs/work-from-home"
-                    element={<h1>Work From Home</h1>}
+                    element={<WorkFromHome/>}
                 />
 
                 {/* Resume Builder */}
