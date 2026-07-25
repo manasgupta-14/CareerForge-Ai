@@ -1,86 +1,75 @@
 import "./Testimonials.css";
+import testimonials_home from "../../../API/testimonials";
 
-const testimonials = [
-    {
-        name: "Rahul Sharma",
-        role: "Frontend Developer",
-        company: "Infosys",
-        image: "https://i.pravatar.cc/150?img=11",
-        review:
-            "CareerForge AI helped me create an ATS-friendly resume. Within two weeks, I got interview calls from multiple companies.",
-        rating: "⭐⭐⭐⭐⭐",
-    },
-    {
-        name: "Priya Verma",
-        role: "Software Engineer",
-        company: "TCS",
-        image: "https://i.pravatar.cc/150?img=32",
-        review:
-            "The AI Resume Builder and Interview Quiz made my preparation much easier. I highly recommend this platform.",
-        rating: "⭐⭐⭐⭐⭐",
-    },
-    {
-        name: "Aman Gupta",
-        role: "React Developer",
-        company: "Wipro",
-        image: "https://i.pravatar.cc/150?img=15",
-        review:
-            "I found my first internship through CareerForge AI. The platform is easy to use and packed with useful features.",
-        rating: "⭐⭐⭐⭐⭐",
-    },
-];
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 const Testimonials = () => {
     return (
         <section className="testimonials">
 
             <div className="testimonial-heading">
-
                 <span>SUCCESS STORIES</span>
 
                 <h2>What Our Users Say</h2>
 
                 <p>
-                    Thousands of job seekers trust CareerForge AI to build their careers.
+                    Thousands of job seekers trust CareerForge AI to build
+                    their careers.
                 </p>
-
             </div>
 
-            <div className="testimonial-grid">
+            <Swiper
+                modules={[Autoplay, Pagination]}
+                slidesPerView={1}
+                spaceBetween={30}
+                loop={true}
+                speed={800}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }}
+                pagination={{
+                    clickable: true,
+                }}
+                className="testimonial-slider"
+            >
+                {testimonials_home.map((item, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="testimonial-card">
 
-                {testimonials.map((item, index) => (
+                            <div className="testimonial-rating">
+                                {item.rating}
+                            </div>
 
-                    <div className="testimonial-card" key={index}>
+                            <p className="testimonial-review">
+                                "{item.review}"
+                            </p>
 
-                        <div className="testimonial-rating">
-                            {item.rating}
-                        </div>
+                            <div className="testimonial-user">
+                                <img
+                                    src={item.image}
+                                    alt={item.name}
+                                />
 
-                        <p className="testimonial-review">
-                            "{item.review}"
-                        </p>
+                                <div>
+                                    <h3>{item.name}</h3>
 
-                        <div className="testimonial-user">
-
-                            <img src={item.image} alt={item.name} />
-
-                            <div>
-
-                                <h3>{item.name}</h3>
-
-                                <span>
-                                    {item.role} • {item.company}
-                                </span>
-
+                                    <span>
+                                        {item.role} • {item.company}
+                                    </span>
+                                </div>
                             </div>
 
                         </div>
-
-                    </div>
-
+                    </SwiperSlide>
                 ))}
-
-            </div>
+            </Swiper>
 
         </section>
     );
