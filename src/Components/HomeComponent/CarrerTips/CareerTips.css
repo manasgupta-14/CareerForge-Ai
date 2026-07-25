@@ -1,10 +1,8 @@
 .career-tips {
     width: 100%;
-    padding: 90px 8%;
+    padding: 20px 8%;
     background: #ffffff;
 }
-
-/* Heading */
 
 .career-heading {
     text-align: center;
@@ -32,12 +30,9 @@
     font-size: 17px;
 }
 
-/* Cards */
-
 .tips-container {
     max-width: 1300px;
     margin: auto;
-
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 30px;
@@ -58,8 +53,8 @@
 
 .tip-card img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height: 260px;
+    object-fit:fill;
 }
 
 .tip-content {
@@ -111,8 +106,6 @@
 .tip-content button:hover {
     background: #1d4ed8;
 }
-
-/* Responsive */
 
 @media(max-width:768px) {
 
