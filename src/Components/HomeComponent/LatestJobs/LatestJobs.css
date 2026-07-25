@@ -1,251 +1,142 @@
 .latest-jobs {
-
     width: 100%;
-
-    padding: 90px 8%;
-
+    padding: 30px 8%;
     background: #ffffff;
-
 }
 
-/* Heading */
-
 .latest-heading {
-
     max-width: 700px;
-
     margin: auto;
-
     text-align: center;
-
-    margin-bottom: 60px;
-
+    margin-bottom: 40px;
 }
 
 .latest-heading span {
-
     color: #2563eb;
-
     font-size: 14px;
-
     font-weight: 700;
-
-    letter-spacing: 1px;
-
+    letter-spacing:1px;
 }
 
 .latest-heading h2 {
-
     margin: 15px 0;
-
     font-size: 42px;
-
     color: #111827;
-
 }
 
 .latest-heading p {
-
     color: #6b7280;
-
     font-size: 17px;
-
     line-height: 1.7;
-
 }
-
-/* List */
 
 .latest-container {
-
     max-width: 1200px;
-
     margin: auto;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 22px;
-
 }
 
-/* Card */
-
 .latest-card {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     background: #fff;
-
     padding: 25px 30px;
-
     border-radius: 16px;
-
     box-shadow: 0 8px 22px rgba(0, 0, 0, .08);
-
     transition: .35s;
-
 }
 
 .latest-card:hover {
-
     transform: translateY(-5px);
-
     box-shadow: 0 18px 35px rgba(37, 99, 235, .15);
-
 }
 
-/* Left */
-
 .job-left h3 {
-
     color: #111827;
-
     font-size: 22px;
-
     margin-bottom: 8px;
-
 }
 
 .job-left p {
-
     color: #6b7280;
-
 }
 
-/* Center */
-
 .job-center {
-
     display: flex;
-
     gap: 25px;
-
     flex-wrap: wrap;
-
 }
 
 .job-center span {
-
     color: #374151;
-
     font-size: 15px;
-
 }
 
-/* Right */
-
 .job-right {
-
     text-align: right;
-
 }
 
 .job-right small {
-
     display: block;
-
     margin-bottom: 12px;
-
     color: #6b7280;
-
 }
 
 .job-right button {
-
     border: none;
-
     background: #2563eb;
-
     color: white;
-
     padding: 12px 22px;
-
     border-radius: 8px;
-
     cursor: pointer;
-
     transition: .3s;
-
 }
 
 .job-right button:hover {
-
     background: #1d4ed8;
-
 }
 
-/* Responsive */
-
 @media(max-width:992px) {
-
     .latest-card {
-
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 20px;
-
     }
 
     .job-right {
-
         width: 100%;
-
         text-align: left;
-
     }
-
 }
 
 @media(max-width:768px) {
-
     .latest-heading h2 {
-
         font-size: 32px;
-
     }
 
     .latest-heading p {
-
         font-size: 15px;
-
     }
 
     .job-center {
-
         flex-direction: column;
-
         gap: 10px;
-
     }
-
 }
 
 @media(max-width:480px) {
-
     .latest-jobs {
-
         padding: 70px 20px;
-
     }
 
     .latest-heading h2 {
-
         font-size: 28px;
-
     }
 
     .job-left h3 {
-
         font-size: 20px;
-
     }
-
 }
