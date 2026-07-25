@@ -1,0 +1,111 @@
+.code-editor-page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 78px); /* subtract sticky navbar height */
+    background: #f8fafc;
+}
+
+.code-editor-body {
+    flex: 1;
+    display: grid;
+    overflow: hidden;
+}
+
+.code-editor-body.split-2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.code-editor-body.split-3 {
+    grid-template-columns: 1.1fr 1fr;
+}
+
+.editor-pane {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e5e7eb;
+    background: #1e1e1e;
+    min-width: 0;
+}
+
+.editor-pane-tabs {
+    display: flex;
+    background: #252526;
+    border-bottom: 1px solid #333;
+}
+
+.tab {
+    padding: 10px 18px;
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+    color: #fff;
+    border-bottom: 2px solid #2563eb;
+    background: #1e1e1e;
+}
+
+.editor-pane-monaco {
+    flex: 1;
+    min-height: 0;
+}
+
+.preview-pane {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    min-width: 0;
+}
+
+.preview-pane-header {
+    padding: 10px 16px;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.preview-frame {
+    flex: 1;
+    width: 100%;
+    border: none;
+    background: #fff;
+}
+
+.preview-error {
+    padding: 12px 16px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 13px;
+    font-family: "Consolas", "Monaco", monospace;
+    border-bottom: 1px solid #fecaca;
+    white-space: pre-wrap;
+}
+
+.console-pane {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .code-editor-body.split-2,
+    .code-editor-body.split-3 {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        overflow-y: auto;
+    }
+
+    .editor-pane {
+        border-right: none;
+        border-bottom: 1px solid #e5e7eb;
+    }
+}

@@ -1,0 +1,135 @@
+.saved-codes-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 25px 80px;
+}
+
+.saved-codes-header h1 {
+    font-size: 32px;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.saved-codes-header p {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+.saved-codes-filters {
+    display: flex;
+    gap: 10px;
+    margin: 28px 0;
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.filter-chip.active {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+}
+
+.saved-codes-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #6b7280;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px dashed #e5e7eb;
+}
+
+.saved-codes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 20px;
+}
+
+.snippet-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.snippet-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.snippet-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.snippet-type-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.snippet-delete-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    display: flex;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.snippet-delete-btn:hover {
+    color: #dc2626;
+    background: #fef2f2;
+}
+
+.snippet-title {
+    font-size: 17px;
+    color: #111827;
+    margin-top: 4px;
+}
+
+.snippet-date {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 8px;
+}
+
+.snippet-load-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 0;
+    border-radius: 8px;
+    border: 1px solid #2563eb;
+    background: #fff;
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.snippet-load-btn:hover {
+    background: #2563eb;
+    color: #fff;
+}
