@@ -15,13 +15,13 @@ const Home = () => {
             <Hero />
             <Companies />
             <Categories />
-            <FeaturedJobs />
+            {/* <FeaturedJobs />
             <LatestJobs />
             <WhyChoose />
             <CareerTips />
             <Testimonials />
             <NewsLetter />
-            <Footer />
+            <Footer /> */}
         </>
     )
 };
