@@ -5,9 +5,21 @@ import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
-import ApplyJobs from "./Components/JobsComponent/ApplyJobs/ApplyJobs";
-import Internship from "./Components/JobsComponent/Internship/Internship";
-import WorkFromHome from "./Components/JobsComponent/WorkFromHome/WorkFromHome";
+import Apply_Jobs from "./Pages/Jobs/Apply_Jobs";
+import Work_From_Home from "./Pages/Jobs/Work_From_Home";
+import InternshipHome from "./Pages/Jobs/InternshipHome";
+
+import Create from "./Pages/ResumeBuilder/Create";
+import MyResumes from "./Pages/ResumeBuilder/MyResumes";
+import Templates from "./Pages/ResumeBuilder/Templates";
+import AtsScore from "./Pages/ResumeBuilder/AtsScore";
+import AiSuggestions from "./Pages/ResumeBuilder/AiSuggestions";
+import Analyzer from "./Pages/ResumeBuilder/Analyzer";
+
+import HtmlCssEditor from "./Pages/CodeEditor/HtmlCssEditor";
+import JavascriptEditor from "./Pages/CodeEditor/JavascriptEditor";
+import ReactEditor from "./Pages/CodeEditor/ReactEditor";
+import SavedCodes from "./Pages/CodeEditor/SavedCodes";
 
 function App() {
     return (
@@ -23,69 +35,69 @@ function App() {
                 {/* Jobs */}
                 <Route
                     path="/jobs/apply-jobs"
-                    element={<ApplyJobs/>}
+                    element={<Apply_Jobs/>}
                 />
 
                 <Route
                     path="/jobs/internship"
-                    element={<Internship/>}
+                    element={<InternshipHome/>}
                 />
 
                 <Route
                     path="/jobs/work-from-home"
-                    element={<WorkFromHome/>}
+                    element={<Work_From_Home/>}
                 />
 
                 {/* Resume Builder */}
                 <Route
                     path="/resume-builder/create"
-                    element={<h1>Create Resume</h1>}
+                    element={<Create />}
                 />
 
                 <Route
                     path="/resume-builder/my-resumes"
-                    element={<h1>My Resumes</h1>}
+                    element={<MyResumes />}
                 />
 
                 <Route
                     path="/resume-builder/templates"
-                    element={<h1>Resume Templates</h1>}
+                    element={<Templates />}
                 />
 
                 <Route
                     path="/resume-builder/ats-score"
-                    element={<h1>ATS Score</h1>}
+                    element={<AtsScore />}
                 />
 
                 <Route
                     path="/resume-builder/ai-suggestions"
-                    element={<h1>AI Suggestions</h1>}
+                    element={<AiSuggestions />}
                 />
 
                 <Route
                     path="/resume-builder/analyzer"
-                    element={<h1>Resume Analyzer</h1>}
+                    element={<Analyzer />}
                 />
 
                 {/* Code Editor */}
                 <Route
                     path="/code-editor/html-css"
-                    element={<h1>HTML / CSS Editor</h1>}
+                    element={<HtmlCssEditor />}
                 />
 
                 <Route
                     path="/code-editor/javascript"
-                    element={<h1>JavaScript Editor</h1>}
+                    element={<JavascriptEditor />}
                 />
 
                 <Route
                     path="/code-editor/react"
-                    element={<h1>React Editor</h1>}
+                    element={<ReactEditor />}
                 />
 
                 <Route
                     path="/code-editor/saved"
-                    element={<h1>Saved Codes</h1>}
+                    element={<SavedCodes />}
                 />
 
                 {/* Quiz */}
