@@ -70,8 +70,8 @@
 }
 
 .testimonial-user img {
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -145,16 +145,16 @@
     }
 
     .testimonial-user img {
-        width: 60px;
-        height: 60px;
+        width: 20px;
+        height: 20px;
     }
 
     .testimonial-user h3 {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .testimonial-user span {
-        font-size: 14px;
+        font-size: 10px;
     }
 
 }
