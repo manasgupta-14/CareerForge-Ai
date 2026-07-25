@@ -1,0 +1,242 @@
+.resume-preview {
+    background: #fff;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px 50px;
+    font-family: "Inter", sans-serif;
+    color: #111827;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
+    border-radius: 6px;
+    min-height: 1000px;
+}
+
+.rp-header h1 {
+    font-size: 30px;
+    margin: 0 0 4px;
+    letter-spacing: .5px;
+}
+
+.rp-role {
+    margin: 0 0 10px;
+    font-weight: 600;
+    color: #2563eb;
+    font-size: 15px;
+}
+
+.rp-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 12.5px;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.rp-contact span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.rp-section {
+    margin-top: 20px;
+}
+
+.rp-section h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2563eb;
+    border-bottom: 1.5px solid #e5e7eb;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.rp-section p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #374151;
+    margin: 0;
+}
+
+.rp-entry {
+    margin-bottom: 14px;
+}
+
+.rp-entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 14px;
+}
+
+.rp-dates {
+    font-size: 12px;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+.rp-entry-sub {
+    font-size: 12.5px;
+    color: #6b7280;
+    margin-bottom: 4px;
+    font-style: italic;
+}
+
+.rp-entry ul {
+    margin: 4px 0 0 18px;
+    padding: 0;
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.rp-project-desc {
+    font-size: 13px;
+    color: #374151;
+    margin: 2px 0 0;
+}
+
+.rp-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.rp-skill-chip {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ============ Template 1: Classic Blue (default above) ============ */
+
+/* ============ Template 2: Minimal Mono ============ */
+.template-2 {
+    font-family: "Georgia", serif;
+}
+.template-2 .rp-header h1 {
+    text-align: center;
+    font-weight: 400;
+}
+.template-2 .rp-role {
+    text-align: center;
+    color: #374151;
+}
+.template-2 .rp-contact {
+    justify-content: center;
+    border-bottom: 1px solid #111827;
+    padding-bottom: 12px;
+}
+.template-2 .rp-section h2 {
+    color: #111827;
+    border-bottom: none;
+    font-weight: 700;
+}
+.template-2 .rp-skill-chip {
+    background: transparent;
+    color: #111827;
+    border: 1px solid #111827;
+}
+
+/* ============ Template 3: Sidebar Dark ============ */
+.template-3 {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.template-3 .rp-header {
+    grid-column: 1 / -1;
+    background: #111827;
+    color: #fff;
+    padding: 30px 40px;
+}
+.template-3 .rp-header h1 { color: #fff; }
+.template-3 .rp-role { color: #93c5fd; }
+.template-3 .rp-contact { color: #d1d5db; }
+.template-3 .rp-section {
+    padding: 0 40px;
+}
+.template-3 .rp-section:nth-of-type(-n+6) { padding-top: 20px; }
+
+/* ============ Template 4: Bold Accent ============ */
+.template-4 .rp-header {
+    border-left: 6px solid #2563eb;
+    padding-left: 18px;
+}
+.template-4 .rp-section h2 {
+    background: #2563eb;
+    color: #fff;
+    padding: 4px 10px;
+    border-bottom: none;
+    display: inline-block;
+    border-radius: 3px;
+}
+.template-4 .rp-skill-chip {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* ============ Template 5: Compact Two-Column Skills ============ */
+.template-5 .rp-header h1 {
+    font-size: 26px;
+}
+.template-5 .rp-section h2 {
+    color: #059669;
+    border-bottom-color: #059669;
+}
+.template-5 .rp-role { color: #059669; }
+.template-5 .rp-skill-chip {
+    background: #ecfdf5;
+    color: #059669;
+}
+.template-5 .rp-entry-head strong { font-size: 13.5px; }
+.template-5 .rp-section { margin-top: 14px; }
+
+/* ============ Template 6: Elegant Serif ============ */
+.template-6 {
+    font-family: "Georgia", "Times New Roman", serif;
+}
+.template-6 .rp-header h1 {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 26px;
+}
+.template-6 .rp-role {
+    color: #7c2d12;
+    font-style: italic;
+}
+.template-6 .rp-section h2 {
+    color: #7c2d12;
+    border-bottom-color: #7c2d12;
+    letter-spacing: 2px;
+}
+.template-6 .rp-skill-chip {
+    background: #fff7ed;
+    color: #7c2d12;
+}
+
+@media print {
+    body * { visibility: hidden; }
+    #resume-preview-print, #resume-preview-print * { visibility: visible; }
+    #resume-preview-print {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+        margin: 0;
+        padding: 20px 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .resume-preview { padding: 25px 22px; }
+    .template-3 { grid-template-columns: 1fr; }
+}

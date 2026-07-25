@@ -1,0 +1,97 @@
+.resume-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.rf-block h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.rf-block-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rf-block-head h3 { margin: 0; }
+
+.rf-add-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #eff6ff;
+    color: #2563eb;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.rf-add-btn:hover { background: #dbeafe; }
+
+.rf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.resume-form input,
+.resume-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-family: inherit;
+    color: #111827;
+    background: #fff;
+    resize: vertical;
+}
+
+.resume-form input:focus,
+.resume-form textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.rf-block > textarea { margin-top: 4px; }
+
+.rf-card {
+    position: relative;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    background: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rf-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.rf-remove-btn:hover { background: #fecaca; }
+
+@media (max-width: 700px) {
+    .rf-grid { grid-template-columns: 1fr; }
+}
