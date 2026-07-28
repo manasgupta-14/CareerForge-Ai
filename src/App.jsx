@@ -21,6 +21,10 @@ import JavascriptEditor from "./Pages/CodeEditor/JavascriptEditor";
 import ReactEditor from "./Pages/CodeEditor/ReactEditor";
 import SavedCodes from "./Pages/CodeEditor/SavedCodes";
 
+import QuizHub from "./Pages/Quiz/QuizHub";
+import QuizPlay from "./Pages/Quiz/QuizPlay";
+import MockInterview from "./Pages/Quiz/MockInterview";
+
 function App() {
     return (
         <BrowserRouter>
@@ -101,29 +105,16 @@ function App() {
                 />
 
                 {/* Quiz */}
-                <Route
-                    path="/quiz/html"
-                    element={<h1>HTML Quiz</h1>}
-                />
-
-                <Route
-                    path="/quiz/css"
-                    element={<h1>CSS Quiz</h1>}
-                />
-
-                <Route
-                    path="/quiz/javascript"
-                    element={<h1>JavaScript Quiz</h1>}
-                />
-
-                <Route
-                    path="/quiz/react"
-                    element={<h1>React Quiz</h1>}
-                />
+                <Route path="/quiz" element={<QuizHub />} />
 
                 <Route
                     path="/quiz/mock-interview"
-                    element={<h1>Mock Interview</h1>}
+                    element={<MockInterview />}
+                />
+
+                <Route
+                    path="/quiz/:category"
+                    element={<QuizPlay />}
                 />
 
                 {/* Other Pages */}
