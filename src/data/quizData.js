@@ -1,0 +1,426 @@
+// Central data source for the Quiz section.
+// Each MCQ question: { id, question, options: [4], answer: index, explanation }
+
+export const CATEGORY_META = {
+    html: {
+        key: "html",
+        label: "HTML Quiz",
+        color: "#e34c26",
+        bg: "#fdece7",
+        description: "Semantic tags, forms, accessibility & document structure.",
+    },
+    css: {
+        key: "css",
+        label: "CSS Quiz",
+        color: "#2563eb",
+        bg: "#eaf1ff",
+        description: "Box model, flexbox, grid, specificity & responsive design.",
+    },
+    javascript: {
+        key: "javascript",
+        label: "JavaScript Quiz",
+        color: "#b58900",
+        bg: "#fef8e7",
+        description: "Closures, async/await, arrays, scope & the DOM.",
+    },
+    react: {
+        key: "react",
+        label: "React Quiz",
+        color: "#0ea5a4",
+        bg: "#e6faf9",
+        description: "Hooks, props vs state, rendering & component lifecycle.",
+    },
+};
+
+export const QUIZ_DATA = {
+    html: [
+        {
+            id: "html-1",
+            question: "Which tag is used to define the main, unique content of a document?",
+            options: ["<section>", "<main>", "<div>", "<body>"],
+            answer: 1,
+            explanation: "<main> represents the dominant, unique content of the document — there should only be one per page.",
+        },
+        {
+            id: "html-2",
+            question: "Which attribute makes a form field mandatory before submission?",
+            options: ["mandatory", "validate", "required", "must-fill"],
+            answer: 2,
+            explanation: "The 'required' attribute triggers built-in browser validation on form fields.",
+        },
+        {
+            id: "html-3",
+            question: "What does the 'alt' attribute on an <img> tag primarily provide?",
+            options: [
+                "A tooltip on hover",
+                "A fallback text for screen readers and broken images",
+                "The image file size",
+                "A caption below the image",
+            ],
+            answer: 1,
+            explanation: "'alt' text is read by screen readers and shown if the image fails to load — key for accessibility.",
+        },
+        {
+            id: "html-4",
+            question: "Which element is best for grouping navigation links?",
+            options: ["<nav>", "<link>", "<menu>", "<header>"],
+            answer: 0,
+            explanation: "<nav> is the semantic element intended specifically for navigation blocks.",
+        },
+        {
+            id: "html-5",
+            question: "What is the correct way to embed a JavaScript file so it runs after HTML parsing without blocking it?",
+            options: [
+                '<script src="app.js">',
+                '<script src="app.js" defer>',
+                '<script src="app.js" inline>',
+                '<script type="lazy" src="app.js">',
+            ],
+            answer: 1,
+            explanation: "The 'defer' attribute downloads the script in parallel and executes it only after the HTML is fully parsed.",
+        },
+        {
+            id: "html-6",
+            question: "Which input type shows a native date picker in supporting browsers?",
+            options: ['type="calendar"', 'type="date"', 'type="datetime"', 'type="picker"'],
+            answer: 1,
+            explanation: '<input type="date"> renders a native date picker UI in modern browsers.',
+        },
+        {
+            id: "html-7",
+            question: "What is semantic HTML mainly used for?",
+            options: [
+                "Making pages load faster",
+                "Adding animations",
+                "Conveying meaning about content structure to browsers and assistive tech",
+                "Reducing CSS file size",
+            ],
+            answer: 2,
+            explanation: "Semantic tags like <article>, <aside>, <nav> describe the meaning of content, aiding SEO and accessibility.",
+        },
+        {
+            id: "html-8",
+            question: "Which HTML5 element is used to draw graphics via JavaScript?",
+            options: ["<svg>", "<canvas>", "<graphic>", "<draw>"],
+            answer: 1,
+            explanation: "<canvas> provides a bitmap surface that JavaScript can draw on using the Canvas API.",
+        },
+    ],
+
+    css: [
+        {
+            id: "css-1",
+            question: "In the CSS box model, what does 'box-sizing: border-box' change?",
+            options: [
+                "Margin is included in the width/height",
+                "Padding and border are included in the specified width/height",
+                "Border is removed",
+                "It disables the box model entirely",
+            ],
+            answer: 1,
+            explanation: "border-box makes width/height include padding and border, so the element doesn't grow beyond the set size.",
+        },
+        {
+            id: "css-2",
+            question: "Which property makes a flex container's children wrap onto multiple lines?",
+            options: ["flex-direction: wrap", "flex-flow: row", "flex-wrap: wrap", "overflow: wrap"],
+            answer: 2,
+            explanation: "flex-wrap: wrap allows flex items to move onto new lines instead of shrinking to fit one row.",
+        },
+        {
+            id: "css-3",
+            question: "Which selector has the highest specificity?",
+            options: ["A class selector (.card)", "An element selector (div)", "An ID selector (#header)", "A universal selector (*)"],
+            answer: 2,
+            explanation: "ID selectors carry more specificity weight than classes, elements, or the universal selector.",
+        },
+        {
+            id: "css-4",
+            question: "What does 'grid-template-columns: repeat(3, 1fr)' create?",
+            options: [
+                "3 rows of equal height",
+                "3 equal-width columns",
+                "A grid with 3 fixed 1px columns",
+                "3 columns that repeat infinitely",
+            ],
+            answer: 1,
+            explanation: "'1fr' is a flexible unit; repeat(3, 1fr) creates three equal-width flexible columns.",
+        },
+        {
+            id: "css-5",
+            question: "Which unit is relative to the root element's font size?",
+            options: ["em", "rem", "vh", "%"],
+            answer: 1,
+            explanation: "'rem' is always relative to the root (<html>) font size, unlike 'em' which is relative to the parent.",
+        },
+        {
+            id: "css-6",
+            question: "Which property is used to create smooth transitions between property value changes?",
+            options: ["animation", "transform", "transition", "keyframes"],
+            answer: 2,
+            explanation: "'transition' animates a property change over a duration; 'animation' + '@keyframes' is for multi-step sequences.",
+        },
+        {
+            id: "css-7",
+            question: "What does 'position: sticky' do?",
+            options: [
+                "Always fixes the element to the viewport",
+                "Removes the element from normal flow permanently",
+                "Toggles between relative and fixed based on scroll position within its parent",
+                "Centers the element automatically",
+            ],
+            answer: 2,
+            explanation: "Sticky elements behave like relative until a scroll threshold, then stick like fixed within their containing block.",
+        },
+        {
+            id: "css-8",
+            question: "Which media query targets screens narrower than 768px?",
+            options: [
+                "@media (min-width: 768px)",
+                "@media (max-width: 768px)",
+                "@media (width: 768px)",
+                "@media screen and (768px)",
+            ],
+            answer: 1,
+            explanation: "'max-width: 768px' applies styles when the viewport is 768px wide or narrower.",
+        },
+    ],
+
+    javascript: [
+        {
+            id: "js-1",
+            question: "What will `typeof null` return in JavaScript?",
+            options: ["'null'", "'undefined'", "'object'", "'number'"],
+            answer: 2,
+            explanation: "This is a well-known JS quirk — typeof null returns 'object' due to a legacy bug kept for compatibility.",
+        },
+        {
+            id: "js-2",
+            question: "What does a closure allow a function to do?",
+            options: [
+                "Run faster than normal functions",
+                "Access variables from its outer (enclosing) scope even after that scope has returned",
+                "Automatically become async",
+                "Prevent all errors from being thrown",
+            ],
+            answer: 1,
+            explanation: "A closure lets an inner function remember and access variables from the scope it was created in.",
+        },
+        {
+            id: "js-3",
+            question: "Which method creates a new array by transforming every element, without mutating the original?",
+            options: ["forEach()", "map()", "filter()", "reduce()"],
+            answer: 1,
+            explanation: "map() returns a new array with each element transformed by the callback; the original array is untouched.",
+        },
+        {
+            id: "js-4",
+            question: "What is the output of: console.log(0.1 + 0.2 === 0.3)?",
+            options: ["true", "false", "undefined", "NaN"],
+            answer: 1,
+            explanation: "Due to floating-point precision, 0.1 + 0.2 evaluates to 0.30000000000000004, so it's not strictly equal to 0.3.",
+        },
+        {
+            id: "js-5",
+            question: "What does `async`/`await` primarily help write?",
+            options: [
+                "Synchronous-looking code for asynchronous operations",
+                "Faster loops",
+                "CSS animations",
+                "Multi-threaded code",
+            ],
+            answer: 0,
+            explanation: "async/await is syntactic sugar over Promises, letting async code read like sequential, synchronous code.",
+        },
+        {
+            id: "js-6",
+            question: "Which keyword declares a block-scoped variable that can be reassigned?",
+            options: ["const", "var", "let", "static"],
+            answer: 2,
+            explanation: "'let' is block-scoped and its value can be reassigned, unlike 'const' which cannot be reassigned.",
+        },
+        {
+            id: "js-7",
+            question: "What does the '===' operator check that '==' does not?",
+            options: [
+                "Whether both operands are functions",
+                "Type, in addition to value",
+                "Whether the values are truthy",
+                "Nothing — they behave identically",
+            ],
+            answer: 1,
+            explanation: "'===' is strict equality — it compares both value and type, avoiding type coercion that '==' performs.",
+        },
+        {
+            id: "js-8",
+            question: "What does `Array.prototype.reduce()` do?",
+            options: [
+                "Removes duplicate items from an array",
+                "Executes a reducer function to accumulate a single output value from an array",
+                "Reduces the array's length by one",
+                "Sorts the array in ascending order",
+            ],
+            answer: 1,
+            explanation: "reduce() runs an accumulator function across the array to produce a single combined value.",
+        },
+    ],
+
+    react: [
+        {
+            id: "react-1",
+            question: "What is the primary difference between props and state?",
+            options: [
+                "Props are mutable inside the component; state is not",
+                "State is managed within a component and can change; props are passed in from a parent and are read-only",
+                "Props can only hold strings; state can hold any type",
+                "There is no real difference",
+            ],
+            answer: 1,
+            explanation: "State is local and mutable via setState/useState; props flow down from a parent and shouldn't be mutated by the child.",
+        },
+        {
+            id: "react-2",
+            question: "Which hook lets you run side effects after render (e.g. data fetching)?",
+            options: ["useMemo", "useEffect", "useRef", "useCallback"],
+            answer: 1,
+            explanation: "useEffect runs side effects after the component renders and can re-run based on a dependency array.",
+        },
+        {
+            id: "react-3",
+            question: "Why does React ask for a stable 'key' prop when rendering lists?",
+            options: [
+                "It's only cosmetic and has no functional purpose",
+                "It helps React identify which items changed, were added, or removed for efficient re-rendering",
+                "It sets the CSS class of the element",
+                "It's required only for arrays longer than 10 items",
+            ],
+            answer: 1,
+            explanation: "Keys give elements a stable identity across renders, letting React's reconciliation update the DOM efficiently.",
+        },
+        {
+            id: "react-4",
+            question: "What does `useState` return?",
+            options: [
+                "Only the current state value",
+                "A pair: the current state value and a function to update it",
+                "A promise that resolves to the state",
+                "An object with a 'value' key",
+            ],
+            answer: 1,
+            explanation: "useState returns an array [state, setState] — commonly destructured with array syntax.",
+        },
+        {
+            id: "react-5",
+            question: "What is the main purpose of `useMemo`?",
+            options: [
+                "To memoize (cache) an expensive computed value between renders unless dependencies change",
+                "To store DOM references",
+                "To trigger a re-render manually",
+                "To replace useEffect entirely",
+            ],
+            answer: 0,
+            explanation: "useMemo caches the result of a calculation so it isn't recomputed on every render unless its dependencies change.",
+        },
+        {
+            id: "react-6",
+            question: "What happens when you call the setter function from useState with a new value?",
+            options: [
+                "Nothing happens until the page is refreshed",
+                "React schedules a re-render of the component with the updated state",
+                "It permanently mutates the previous state object",
+                "It throws an error if called outside an event handler",
+            ],
+            answer: 1,
+            explanation: "Calling the setter schedules an update; React re-renders the component (and its children) with the new state.",
+        },
+        {
+            id: "react-7",
+            question: "What is a 'controlled component' in React forms?",
+            options: [
+                "A component that can't be edited by the user",
+                "A form element whose value is driven by React state and updated via onChange",
+                "A component wrapped in React.memo",
+                "Any component that uses useEffect",
+            ],
+            answer: 1,
+            explanation: "A controlled component's value is tied to state, with onChange updating that state — React is the single source of truth.",
+        },
+        {
+            id: "react-8",
+            question: "What does React.memo primarily help with?",
+            options: [
+                "Storing global state",
+                "Preventing a component from re-rendering when its props haven't changed",
+                "Fetching data automatically",
+                "Adding CSS animations",
+            ],
+            answer: 1,
+            explanation: "React.memo skips re-rendering a component if its props are shallowly equal to the previous render's props.",
+        },
+    ],
+};
+
+// Open-ended prep questions for the Mock Interview mode.
+// No auto-scoring — the user self-rates after comparing their answer with the hint.
+export const MOCK_INTERVIEW_QUESTIONS = [
+    {
+        id: "mi-1",
+        category: "Introduction",
+        question: "Tell me about yourself and walk me through your resume.",
+        hint: "Keep it under 90 seconds: current role/education → key skills or projects → why you're excited about this opportunity.",
+    },
+    {
+        id: "mi-2",
+        category: "Technical",
+        question: "Explain the difference between synchronous and asynchronous code with an example.",
+        hint: "Synchronous code blocks execution until it finishes; asynchronous code (callbacks/promises/async-await) lets other work continue while waiting, e.g. a fetch() call.",
+    },
+    {
+        id: "mi-3",
+        category: "Technical",
+        question: "How would you optimize a web page that loads slowly?",
+        hint: "Mention: image compression/lazy-loading, code splitting, caching, minifying assets, reducing render-blocking scripts, using a CDN.",
+    },
+    {
+        id: "mi-4",
+        category: "Behavioral",
+        question: "Describe a time you disagreed with a teammate. How did you handle it?",
+        hint: "Use STAR (Situation, Task, Action, Result). Focus on how you communicated respectfully and reached a resolution.",
+    },
+    {
+        id: "mi-5",
+        category: "Behavioral",
+        question: "Tell me about a project you're most proud of and why.",
+        hint: "Pick one project, explain your specific contribution, the challenge you solved, and the measurable outcome or impact.",
+    },
+    {
+        id: "mi-6",
+        category: "Technical",
+        question: "What is the difference between REST and GraphQL APIs?",
+        hint: "REST exposes fixed endpoints per resource; GraphQL lets clients request exactly the fields they need from a single endpoint.",
+    },
+    {
+        id: "mi-7",
+        category: "Behavioral",
+        question: "How do you prioritize tasks when working on multiple deadlines?",
+        hint: "Talk about a prioritization method (impact/urgency matrix), communicating with stakeholders, and an example.",
+    },
+    {
+        id: "mi-8",
+        category: "Technical",
+        question: "What is responsive design and how do you implement it?",
+        hint: "Fluid grids, flexible images, and media queries so layouts adapt across screen sizes — mention mobile-first approach.",
+    },
+    {
+        id: "mi-9",
+        category: "Closing",
+        question: "Where do you see yourself in the next few years?",
+        hint: "Show ambition tied realistically to growth within this type of role, without sounding disconnected from the job itself.",
+    },
+    {
+        id: "mi-10",
+        category: "Closing",
+        question: "Do you have any questions for us?",
+        hint: "Always have 2-3 ready — about team structure, what success looks like in 6 months, or current challenges the team faces.",
+    },
+];
