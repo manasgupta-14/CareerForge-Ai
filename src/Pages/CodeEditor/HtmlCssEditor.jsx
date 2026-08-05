@@ -6,7 +6,7 @@ import EditorToolbar from "../../Components/CodeEditorComponent/EditorToolbar/Ed
 import SaveModal from "../../Components/CodeEditorComponent/SaveModal/SaveModal";
 import LoginRequiredModal from "../../Components/Common/LoginRequiredModal";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 import {
     getSnippetById,
     saveSnippet,

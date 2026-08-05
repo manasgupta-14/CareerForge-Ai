@@ -4,7 +4,7 @@ import { Code2, Trophy, MessagesSquare, ArrowRight, History, LogIn } from "lucid
 
 import { CATEGORY_META, QUIZ_DATA } from "../../data/quizData";
 import { getBestAttempt, getAllAttempts } from "../../utils/quizStorage";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 import "./QuizHub.css";
 
 const formatDate = (iso) => {

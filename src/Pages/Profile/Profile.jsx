@@ -14,7 +14,7 @@ import {
     Save,
 } from "lucide-react";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 import "./Profile.css";
 
 // Every field a typical professional profile is expected to have.

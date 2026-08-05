@@ -7,7 +7,7 @@ import SaveModal from "../../Components/CodeEditorComponent/SaveModal/SaveModal"
 import ConsolePanel from "../../Components/CodeEditorComponent/ConsolePanel/ConsolePanel";
 import LoginRequiredModal from "../../Components/Common/LoginRequiredModal";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 import {
     getSnippetById,
     saveSnippet,

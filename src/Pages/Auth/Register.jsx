@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, User, Eye, EyeOff, UserPlus } from "lucide-react";
 
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 import "./Auth.css";
 
 const Register = () => {

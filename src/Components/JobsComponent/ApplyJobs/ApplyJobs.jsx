@@ -17,7 +17,7 @@ import "./ApplyJobs.css";
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import LoginRequiredModal from '../../Common/LoginRequiredModal';
-import { useAuth } from '../../../context/AuthContext';
+import { useAuth } from '../../../Context/AuthContext';
 import {
     getAppliedJobs,
     applyToJob,

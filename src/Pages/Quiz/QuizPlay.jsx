@@ -11,7 +11,7 @@ import {
 
 import { CATEGORY_META, QUIZ_DATA } from "../../data/quizData";
 import { saveAttempt, getBestAttempt } from "../../utils/quizStorage";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 import "./QuizPlay.css";
 
 const shuffleArray = (arr) => {

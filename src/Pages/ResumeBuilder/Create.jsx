@@ -8,7 +8,7 @@ import {
 import ResumeForm from "../../Components/ResumeComponent/ResumeForm";
 import ResumePreview from "../../Components/ResumeComponent/ResumePreview";
 import LoginRequiredModal from "../../Components/Common/LoginRequiredModal";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 import {
     emptyResume, getResumeById, saveResume, setActiveResumeId,
 } from "../../utils/resumeStorage";
