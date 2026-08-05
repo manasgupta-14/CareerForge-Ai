@@ -1,6 +1,3 @@
-// Simple, transparent, rule-based resume checking.
-// No external AI call — everything runs locally in the browser.
-
 const WEAK_VERBS = [
     "responsible for", "worked on", "helped with", "did", "handled",
     "duties included", "tasked with", "in charge of",
@@ -30,7 +27,6 @@ const clamp = (n, min = 0, max = 100) => Math.max(min, Math.min(max, n));
 const countWords = (text) =>
     (text.trim().match(/\S+/g) || []).length;
 
-// Convert a structured resume object into flat text for analysis.
 export const resumeToText = (resume) => {
     if (!resume) return "";
 
@@ -92,7 +88,6 @@ export const runAtsCheck = (text, jobKeywords = "") => {
     let score = 0;
     const maxScore = 100;
 
-    // 1. Contact info (15 pts)
     const hasEmail = EMAIL_RE.test(text);
     const hasPhone = PHONE_RE.test(text);
     if (hasEmail && hasPhone) {
@@ -108,7 +103,6 @@ export const runAtsCheck = (text, jobKeywords = "") => {
         );
     }
 
-    // 2. Core sections present (25 pts, 5 each)
     let sectionScore = 0;
     Object.entries(SECTION_KEYWORDS).forEach(([section, keywords]) => {
         const found = keywords.some((k) => lower.includes(k));
@@ -121,7 +115,6 @@ export const runAtsCheck = (text, jobKeywords = "") => {
     score += sectionScore;
     if (sectionScore === 25) passes.push("All core sections (contact, summary, experience, education, skills) are present.");
 
-    // 3. Length check (15 pts)
     if (wordCount >= 250 && wordCount <= 900) {
         score += 15;
         passes.push(`Good length (${wordCount} words) — easy for ATS and recruiters to parse.`);
@@ -133,7 +126,6 @@ export const runAtsCheck = (text, jobKeywords = "") => {
         issues.push(`Resume looks long (${wordCount} words). Consider trimming to the most relevant, recent experience.`);
     }
 
-    // 4. Action verbs vs weak phrases (15 pts)
     const actionCount = ACTION_VERBS.filter((v) => lower.includes(v)).length;
     const weakCount = WEAK_VERBS.filter((v) => lower.includes(v)).length;
     if (actionCount >= 4 && weakCount === 0) {
@@ -150,7 +142,6 @@ export const runAtsCheck = (text, jobKeywords = "") => {
         issues.push(`Avoid passive phrases like "responsible for" or "worked on" — found ${weakCount} instance(s).`);
     }
 
-    // 5. Quantified achievements (15 pts)
     const numberMatches = text.match(/\d+%?/g) || [];
     if (numberMatches.length >= 4) {
         score += 15;
@@ -162,7 +153,6 @@ export const runAtsCheck = (text, jobKeywords = "") => {
         issues.push("No numbers or metrics found. Quantify your impact wherever possible (e.g. \"reduced load time by 40%\").");
     }
 
-    // 6. Formatting red flags (10 pts)
     const hasTabsOrWeirdChars = /\t{2,}|[■●◆]/.test(text);
     const hasBullets = /[•\-*]\s/.test(text) || /\n\s*[-•]/.test(text);
     if (!hasTabsOrWeirdChars) {
@@ -178,7 +168,6 @@ export const runAtsCheck = (text, jobKeywords = "") => {
         issues.push("Use bullet points to break up experience descriptions instead of long paragraphs.");
     }
 
-    // 7. Keyword match against target job (5 pts, optional)
     let keywordMatch = null;
     const keywords = extractKeywords(jobKeywords);
     if (keywords.length) {
@@ -216,9 +205,6 @@ export const runAtsCheck = (text, jobKeywords = "") => {
     };
 };
 
-/**
- * Generates advisory, higher-level suggestions (separate tone from raw ATS scoring).
- */
 export const generateSuggestions = (resume) => {
     const suggestions = [];
     const text = resumeToText(resume);
