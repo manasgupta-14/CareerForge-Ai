@@ -1,8 +1,18 @@
-const STORAGE_KEY = "quiz_attempts";
+import { getCurrentUser } from "./authStorage";
+
+const BASE_KEY = "quiz_attempts";
+
+const storageKey = () => {
+    const user = getCurrentUser();
+    return user ? `${BASE_KEY}_${user.id}` : null;
+};
 
 const readAll = () => {
+    const key = storageKey();
+    if (!key) return [];
+
     try {
-        const raw = localStorage.getItem(STORAGE_KEY);
+        const raw = localStorage.getItem(key);
         return raw ? JSON.parse(raw) : [];
     } catch (err) {
         console.error("Failed to read quiz attempts:", err);
@@ -11,8 +21,11 @@ const readAll = () => {
 };
 
 const writeAll = (attempts) => {
+    const key = storageKey();
+    if (!key) return false;
+
     try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(attempts));
+        localStorage.setItem(key, JSON.stringify(attempts));
         return true;
     } catch (err) {
         console.error("Failed to save quiz attempts:", err);
@@ -37,6 +50,8 @@ export const getBestAttempt = (category) => {
 };
 
 export const saveAttempt = ({ category, score, total, answers }) => {
+    if (!storageKey()) return null;
+
     const attempts = readAll();
 
     const newAttempt = {
