@@ -1,20 +1,32 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
     Menu,
     X,
     ChevronDown,
     BriefcaseBusiness,
+    UserCircle2,
+    LogOut,
 } from "lucide-react";
 
+import { useAuth } from "../../context/AuthContext";
 import "./Navbar.css";
 
 const Navbar = () => {
+
+    const { user, isAuthenticated, logout } = useAuth();
+    const navigate = useNavigate();
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState("");
 
     const navRef = useRef(null);
+
+    const handleLogout = () => {
+        logout();
+        closeMenu();
+        navigate("/");
+    };
 
     const closeMenu = () => {
         setMenuOpen(false);
@@ -37,7 +49,6 @@ const Navbar = () => {
         );
     };
 
-    // Close on outside click
     useEffect(() => {
 
         const handleOutsideClick = (e) => {
@@ -62,7 +73,6 @@ const Navbar = () => {
 
     }, []);
 
-    // Close on ESC
     useEffect(() => {
 
         const handleEscape = (e) => {
@@ -83,7 +93,7 @@ const Navbar = () => {
         };
 
     }, []);
-    
+
     useEffect(() => {
 
         const handleResize = () => {
@@ -114,8 +124,6 @@ const Navbar = () => {
                 ref={navRef}
             >
 
-                {/* Logo */}
-
                 <Link
                     to="/"
                     className="logo"
@@ -127,8 +135,6 @@ const Navbar = () => {
                         Career<span>Forge</span> AI
                     </span>
                 </Link>
-
-                {/* Navigation */}
 
                 <nav
                     className={
@@ -150,8 +156,6 @@ const Navbar = () => {
                             </NavLink>
 
                         </li>
-
-                        {/* Jobs */}
 
                         <li
                             className={`dropdown ${activeDropdown === "jobs"
@@ -199,8 +203,6 @@ const Navbar = () => {
 
                         </li>
 
-                        {/* Resume */}
-
                         <li
                             className={`dropdown ${activeDropdown === "resume"
                                 ? "open"
@@ -229,12 +231,14 @@ const Navbar = () => {
                                     Create Resume
                                 </NavLink>
 
-                                <NavLink
-                                    to="/resume-builder/my-resumes"
-                                    onClick={closeMenu}
-                                >
-                                    My Resumes
-                                </NavLink>
+                                {isAuthenticated && (
+                                    <NavLink
+                                        to="/resume-builder/my-resumes"
+                                        onClick={closeMenu}
+                                    >
+                                        My Resumes
+                                    </NavLink>
+                                )}
 
                                 <NavLink
                                     to="/resume-builder/templates"
@@ -267,8 +271,6 @@ const Navbar = () => {
                             </div>
 
                         </li>
-
-                        {/* Code Editor */}
 
                         <li
                             className={`dropdown ${activeDropdown === "editor"
@@ -312,22 +314,23 @@ const Navbar = () => {
                                     React
                                 </NavLink>
 
-                                <NavLink
-                                    to="/code-editor/saved"
-                                    onClick={closeMenu}
-                                >
-                                    Saved Codes
-                                </NavLink>
+                                {isAuthenticated && (
+                                    <NavLink
+                                        to="/code-editor/saved"
+                                        onClick={closeMenu}
+                                    >
+                                        Saved Codes
+                                    </NavLink>
+                                )}
 
                             </div>
 
                         </li>
-                        {/* Quiz */}
 
                         <li
                             className={`dropdown ${activeDropdown === "quiz"
-                                    ? "open"
-                                    : ""
+                                ? "open"
+                                : ""
                                 }`}
                         >
                             <button
@@ -380,8 +383,6 @@ const Navbar = () => {
 
                         </li>
 
-                        {/* About */}
-
                         <li>
                             <NavLink
                                 to="/about"
@@ -390,8 +391,6 @@ const Navbar = () => {
                                 About
                             </NavLink>
                         </li>
-
-                        {/* Contact */}
 
                         <li>
                             <NavLink
@@ -404,51 +403,110 @@ const Navbar = () => {
 
                     </ul>
 
-                    {/* Mobile Buttons */}
-
                     <div className="mobile-buttons">
 
-                        <NavLink
-                            to="/login"
-                            className="login-btn"
-                            onClick={closeMenu}
-                        >
-                            Login
-                        </NavLink>
+                        {isAuthenticated ? (
+                            <div className="mobile-profile-block">
+                                <div className="mobile-profile-name">
+                                    <UserCircle2 size={20} />
+                                    <span>{user?.name}</span>
+                                </div>
+                                <NavLink
+                                    to="/profile"
+                                    className="profile-dropdown-link"
+                                    onClick={closeMenu}
+                                >
+                                    My Profile
+                                </NavLink>
+                                <button
+                                    type="button"
+                                    className="mobile-logout-btn"
+                                    onClick={handleLogout}
+                                >
+                                    <LogOut size={16} /> Logout
+                                </button>
+                            </div>
+                        ) : (
+                            <>
+                                <NavLink
+                                    to="/login"
+                                    className="login-btn"
+                                    onClick={closeMenu}
+                                >
+                                    Login
+                                </NavLink>
 
-                        <NavLink
-                            to="/register"
-                            className="register-btn"
-                            onClick={closeMenu}
-                        >
-                            Register
-                        </NavLink>
+                                <NavLink
+                                    to="/register"
+                                    className="register-btn"
+                                    onClick={closeMenu}
+                                >
+                                    Register
+                                </NavLink>
+                            </>
+                        )}
 
                     </div>
 
                 </nav>
 
-                {/* Desktop Buttons */}
-
                 <div className="desktop-buttons">
 
-                    <NavLink
-                        to="/login"
-                        className="login-btn"
-                    >
-                        Login
-                    </NavLink>
+                    {isAuthenticated ? (
+                        <div className="profile-dropdown">
+                            <Link to="/profile" className="profile-trigger">
+                                <span className="profile-avatar">
+                                    {user?.name?.charAt(0)?.toUpperCase() || "U"}
+                                </span>
+                                <span className="profile-name">{user?.name}</span>
+                                <ChevronDown size={15} />
+                            </Link>
 
-                    <NavLink
-                        to="/register"
-                        className="register-btn"
-                    >
-                        Register
-                    </NavLink>
+                            <div className="profile-dropdown-menu">
+                                <div className="profile-dropdown-email">{user?.email}</div>
+
+                                <Link to="/profile" className="profile-dropdown-link">
+                                    My Profile
+                                </Link>
+
+                                {isAuthenticated && (
+                                    <Link to="/resume-builder/my-resumes" className="profile-dropdown-link">
+                                        My Resumes
+                                    </Link>
+                                )}
+
+                                <Link to="/code-editor/saved" className="profile-dropdown-link">
+                                    Saved Codes
+                                </Link>
+
+                                <button
+                                    type="button"
+                                    className="profile-dropdown-logout"
+                                    onClick={handleLogout}
+                                >
+                                    <LogOut size={15} /> Logout
+                                </button>
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <NavLink
+                                to="/login"
+                                className="login-btn"
+                            >
+                                Login
+                            </NavLink>
+
+                            <NavLink
+                                to="/register"
+                                className="register-btn"
+                            >
+                                Register
+                            </NavLink>
+                        </>
+                    )}
 
                 </div>
-
-                {/* Mobile Menu Icon */}
 
                 <button
                     type="button"

@@ -3,21 +3,21 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
 
 body {
     font-family: "Inter", sans-serif;
     background: #f8fafc;
-    color: #111827;
+    color: #111827
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none
 }
 
 ul {
-    list-style: none;
+    list-style: none
 }
 
 .header {
@@ -29,7 +29,7 @@ ul {
     background: rgba(255, 255, 255, .95);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid #e5e7eb;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .05)
 }
 
 .container {
@@ -39,10 +39,8 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+    position: relative
 }
-
-/* Logo */
 
 .logo {
     display: flex;
@@ -51,507 +49,516 @@ ul {
     color: #111827;
     font-size: 22px;
     font-weight: 800;
-    transition: .3s;
+    transition: .3s
 }
 
 .logo:hover {
-    transform: scale(1.03);
+    transform: scale(1.03)
 }
 
 .logo svg {
-    color: #2563eb;
+    color: #2563eb
 }
 
 .logo-text span {
-    color: #2563eb;
+    color: #2563eb
 }
-
-/* Navigation */
 
 .nav-links {
     display: flex;
-    align-items: center;
+    align-items: center
 }
 
 .nav-links ul {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 24px
 }
 
 .nav-links ul li {
-    position: relative;
+    position: relative
 }
-
-/* Links */
 
 .nav-links ul li>a,
 .dropdown-title {
     display: flex;
     align-items: center;
     gap: 6px;
-
     background: none;
     border: none;
     cursor: pointer;
-
     font-size: 16px;
     font-weight: 600;
     font-family: inherit;
-
     color: #374151;
     padding: 10px 0;
-
     transition: .3s;
-    position: relative;
+    position: relative
 }
 
 .nav-links ul li>a::after,
 .dropdown-title::after {
-
     content: "";
     position: absolute;
-
     left: 0;
     bottom: -5px;
-
     width: 0;
     height: 2px;
-
     background: #2563eb;
-    transition: .3s;
+    transition: .3s
 }
 
 .nav-links ul li>a:hover,
 .nav-links ul li>a.active,
 .dropdown:hover .dropdown-title {
-
-    color: #2563eb;
+    color: #2563eb
 }
 
 .nav-links ul li>a:hover::after,
 .nav-links ul li>a.active::after,
 .dropdown:hover .dropdown-title::after {
-
-    width: 100%;
+    width: 100%
 }
 
-/* Arrow */
-
 .dropdown-title svg {
-    transition: .3s;
+    transition: .3s
 }
 
 .dropdown:hover .dropdown-title svg {
-    transform: rotate(180deg);
+    transform: rotate(180deg)
 }
 
-/* Dropdown */
-
 .dropdown-menu {
-
     position: absolute;
     left: 0;
     top: 120%;
-
     min-width: 240px;
-
     background: #fff;
-
     border-radius: 14px;
     border: 1px solid #e5e7eb;
-
     padding: 10px;
-
     display: flex;
     flex-direction: column;
-
     box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
-
     opacity: 0;
     visibility: hidden;
-
     transform: translateY(15px);
-
     pointer-events: none;
-
-    transition: .35s ease;
+    transition: .35s ease
 }
 
 .dropdown:hover>.dropdown-menu {
-
     opacity: 1;
     visibility: visible;
-
     transform: translateY(0);
-
-    pointer-events: auto;
+    pointer-events: auto
 }
 
 .dropdown-menu a {
-
     padding: 12px 15px;
-
     border-radius: 8px;
-
     color: #374151;
     font-size: 15px;
     font-weight: 500;
-
-    transition: .3s;
+    transition: .3s
 }
 
 .dropdown-menu a:hover {
-
     background: #2563eb;
     color: #fff;
-
-    transform: translateX(5px);
+    transform: translateX(5px)
 }
 
 .dropdown-menu a.active {
-
     background: #2563eb;
-    color: #fff;
+    color: #fff
 }
 
-/* Buttons */
-
 .desktop-buttons {
-
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 15px
 }
 
 .login-btn,
 .register-btn {
-
     padding: 11px 24px;
     border-radius: 10px;
-
     font-size: 15px;
     font-weight: 600;
-
-    transition: .3s;
+    transition: .3s
 }
 
 .login-btn {
-
     border: 2px solid #2563eb;
-    color: #2563eb;
+    color: #2563eb
 }
 
 .login-btn:hover {
-
     background: #2563eb;
-    color: #fff;
+    color: #fff
 }
 
 .register-btn {
-
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
     color: #fff;
-
-    box-shadow: 0 8px 18px rgba(37, 99, 235, .30);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, .3)
 }
 
 .register-btn:hover {
-
     transform: translateY(-2px);
-
-    box-shadow: 0 12px 24px rgba(37, 99, 235, .40);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, .4)
 }
 
-/* Mobile */
-
 .mobile-buttons {
-
-    display: none;
+    display: none
 }
 
 .menu-icon {
-
     display: none;
-
     background: none;
     border: none;
-
     cursor: pointer;
-
     color: #111827;
-
-    transition: .3s;
+    transition: .3s
 }
 
 .menu-icon:hover {
-
-    color: #2563eb;
+    color: #2563eb
 }
 
-/* ===========================
-   Responsive
-=========================== */
-
 @media (max-width:1100px) {
-
     .desktop-buttons {
-        display: none;
+        display: none
     }
 
     .menu-icon {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: center
     }
 
-    /* Mobile Menu */
-
     .nav-links {
-
         position: absolute;
         top: 100%;
         left: 0;
-
         width: 100%;
-
         background: #fff;
-
         border-top: 1px solid #e5e7eb;
         box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
-
         padding: 20px;
-
         flex-direction: column;
         align-items: flex-start;
-
         opacity: 0;
         visibility: hidden;
-
         transform: translateY(-15px);
-
         pointer-events: none;
-
         transition: .35s ease;
-
-        z-index: 999;
+        z-index: 999
     }
 
     .nav-links.active {
-
         opacity: 1;
         visibility: visible;
-
         transform: translateY(0);
-
-        pointer-events: auto;
+        pointer-events: auto
     }
 
     .nav-links ul {
-
         width: 100%;
-
         display: flex;
         flex-direction: column;
-
-        gap: 0;
+        gap: 0
     }
 
     .nav-links ul li {
-
-        width: 100%;
+        width: 100%
     }
 
     .nav-links ul li>a,
     .dropdown-title {
-
         width: 100%;
-
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         padding: 16px 0;
-
-        border-bottom: 1px solid #eef2f7;
+        border-bottom: 1px solid #eef2f7
     }
-
-    /* Mobile Dropdown */
 
     .dropdown-menu {
-
         position: static;
-
         min-width: 100%;
-
         background: #f8fafc;
-
         border: none;
-
         border-radius: 10px;
-
         box-shadow: none;
-
         margin-top: 6px;
-
         padding: 0;
-
         max-height: 0;
-
         overflow: hidden;
-
         opacity: 1;
         visibility: visible;
-
         pointer-events: auto;
-
         transform: none;
-
-        transition: max-height .35s ease;
+        transition: max-height .35s ease
     }
 
-    /* Open only selected dropdown */
-
     .dropdown.open .dropdown-menu {
-
         max-height: 500px;
-
-        padding: 8px 0;
+        padding: 8px 0
     }
 
     .dropdown-menu a {
-
         padding: 12px 16px;
-        font-size: 15px;
+        font-size: 15px
     }
 
     .dropdown-menu a:hover {
-
-        transform: none;
+        transform: none
     }
 
-    /* Rotate Arrow */
-
     .dropdown.open .dropdown-title svg {
-
-        transform: rotate(180deg);
+        transform: rotate(180deg)
     }
 
     .mobile-buttons {
-
         width: 100%;
-
         display: flex;
         flex-direction: column;
-
         gap: 12px;
-
-        margin-top: 20px;
+        margin-top: 20px
     }
 
     .mobile-buttons a {
-
         width: 100%;
-        text-align: center;
+        text-align: center
     }
-
-    /* Desktop hover disabled */
 
     .dropdown:hover>.dropdown-menu {
-
         opacity: 1;
         visibility: visible;
-
-        transform: none;
+        transform: none
     }
-
 }
 
-
-/* ===========================
-   Tablet
-=========================== */
-
 @media (max-width:768px) {
-
     .container {
-
-        padding: 15px 20px;
+        padding: 15px 20px
     }
 
     .logo {
-
-        font-size: 20px;
+        font-size: 20px
     }
 
     .logo svg {
-
         width: 26px;
-        height: 26px;
+        height: 26px
     }
 
     .nav-links {
-
-        padding: 18px;
+        padding: 18px
     }
 }
 
-
-/* ===========================
-   Mobile
-=========================== */
-
 @media (max-width:576px) {
-
     .container {
-
-        padding: 15px;
+        padding: 15px
     }
 
     .logo {
-
-        font-size: 18px;
+        font-size: 18px
     }
 
     .logo svg {
-
         width: 24px;
-        height: 24px;
+        height: 24px
     }
 
     .menu-icon svg {
-
         width: 28px;
-        height: 28px;
+        height: 28px
     }
 
     .login-btn,
     .register-btn {
-
         padding: 10px 18px;
-        font-size: 14px;
+        font-size: 14px
     }
 
     .dropdown-menu a {
-
-        font-size: 14px;
+        font-size: 14px
     }
 }
 
-
-/* ===========================
-   Large Screen
-=========================== */
-
 @media (min-width:1400px) {
-
     .container {
-
-        max-width: 1400px;
+        max-width: 1400px
     }
 
     .nav-links ul {
-
-        gap: 30px;
+        gap: 30px
     }
+}
+
+.profile-dropdown {
+    position: relative
+}
+
+.profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f3f4f6;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 6px 14px 6px 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    transition: .3s
+}
+
+.profile-trigger:hover {
+    border-color: #2563eb;
+    background: #eaf1ff
+}
+
+.profile-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700
+}
+
+.profile-name {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #374151;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.profile-trigger svg {
+    color: #6b7280;
+    transition: .3s
+}
+
+.profile-dropdown:hover .profile-trigger svg {
+    transform: rotate(180deg)
+}
+
+.profile-dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    min-width: 220px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    pointer-events: none;
+    transition: .3s ease;
+    z-index: 50
+}
+
+.profile-dropdown:hover .profile-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto
+}
+
+.profile-dropdown-email {
+    padding: 8px 12px 10px;
+    font-size: 12.5px;
+    color: #9ca3af;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 6px;
+    word-break: break-all
+}
+
+.profile-dropdown-link {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: #374151;
+    transition: .2s
+}
+
+.profile-dropdown-link:hover {
+    background: #2563eb;
+    color: #fff
+}
+
+.profile-dropdown-logout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 10px 12px;
+    border: none;
+    background: none;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #dc2626;
+    cursor: pointer;
+    text-align: left;
+    transition: .2s
+}
+
+.profile-dropdown-logout:hover {
+    background: #fef2f2
+}
+
+.mobile-profile-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%
+}
+
+.mobile-profile-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151
+}
+
+.mobile-logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 0;
+    border-radius: 10px;
+    border: 2px solid #dc2626;
+    background: none;
+    color: #dc2626;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s
+}
+
+.mobile-logout-btn:hover {
+    background: #dc2626;
+    color: #fff
 }
