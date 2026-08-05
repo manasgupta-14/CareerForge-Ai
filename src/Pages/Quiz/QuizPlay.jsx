@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
     CheckCircle2,
@@ -11,20 +11,52 @@ import {
 
 import { CATEGORY_META, QUIZ_DATA } from "../../data/quizData";
 import { saveAttempt, getBestAttempt } from "../../utils/quizStorage";
+import { useAuth } from "../../context/AuthContext";
 import "./QuizPlay.css";
+
+const shuffleArray = (arr) => {
+    const copy = [...arr];
+    for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+};
+
+const shuffleQuestion = (q) => {
+    const withIndex = q.options.map((opt, i) => ({ opt, i }));
+    const shuffledOptions = shuffleArray(withIndex);
+
+    return {
+        ...q,
+        options: shuffledOptions.map((o) => o.opt),
+        answer: shuffledOptions.findIndex((o) => o.i === q.answer),
+    };
+};
 
 const QuizPlay = () => {
     const { category } = useParams();
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
 
     const meta = CATEGORY_META[category];
     const questions = QUIZ_DATA[category];
 
     const [phase, setPhase] = useState("start"); 
+    const [activeQuestions, setActiveQuestions] = useState([]);
     const [index, setIndex] = useState(0);
     const [selected, setSelected] = useState(null);
     const [answers, setAnswers] = useState([]);
     const [result, setResult] = useState(null);
+
+    useEffect(() => {
+        setPhase("start");
+        setActiveQuestions([]);
+        setIndex(0);
+        setSelected(null);
+        setAnswers([]);
+        setResult(null);
+    }, [category]);
 
     if (!meta || !questions) {
         return (
@@ -38,11 +70,13 @@ const QuizPlay = () => {
         );
     }
 
-    const best = getBestAttempt(category);
-    const current = questions[index];
-    const isLast = index === questions.length - 1;
+    const best = isAuthenticated ? getBestAttempt(category) : null;
+    const current = activeQuestions[index];
+    const isLast = index === activeQuestions.length - 1;
 
     const startQuiz = () => {
+
+        setActiveQuestions(shuffleArray(questions).map(shuffleQuestion));
         setPhase("active");
         setIndex(0);
         setSelected(null);
@@ -56,6 +90,7 @@ const QuizPlay = () => {
     };
 
     const handleNext = () => {
+        if (!current) return;
         const isCorrect = selected === current.answer;
         const updatedAnswers = [
             ...answers,
@@ -64,13 +99,25 @@ const QuizPlay = () => {
 
         if (isLast) {
             const score = updatedAnswers.filter((a) => a.correct).length;
-            const attempt = saveAttempt({
-                category,
-                score,
-                total: questions.length,
-                answers: updatedAnswers,
-            });
-            setResult(attempt);
+
+            if (isAuthenticated) {
+                const attempt = saveAttempt({
+                    category,
+                    score,
+                    total: activeQuestions.length,
+                    answers: updatedAnswers,
+                });
+                setResult(attempt);
+            } else {
+                
+                setResult({
+                    score,
+                    total: activeQuestions.length,
+                    answers: updatedAnswers,
+                    saved: false,
+                });
+            }
+
             setPhase("end");
         } else {
             setAnswers(updatedAnswers);
@@ -80,7 +127,7 @@ const QuizPlay = () => {
     };
 
     const optionClass = (optIndex) => {
-        if (selected === null) return "quiz-option";
+        if (!current || selected === null) return "quiz-option";
         if (optIndex === current.answer) return "quiz-option correct";
         if (optIndex === selected) return "quiz-option wrong";
         return "quiz-option disabled";
@@ -104,13 +151,19 @@ const QuizPlay = () => {
                     <div className="quiz-start-icon" style={{ background: meta.bg, color: meta.color }}>
                         <ListChecks size={30} />
                     </div>
-                    <h2>{questions.length} Questions</h2>
+                    <h2>{activeQuestions.length || questions.length} Questions</h2>
                     <p>Answer each question — you'll see the correct answer right after you pick one.</p>
 
                     {best && (
                         <div className="quiz-best-banner">
                             <Trophy size={15} /> Your best score: {best.score}/{best.total}
                         </div>
+                    )}
+
+                    {!isAuthenticated && (
+                        <p className="quiz-login-hint">
+                            <Link to="/login">Login</Link> to save your score and track your quiz history.
+                        </p>
                     )}
 
                     <button className="quiz-primary-btn" onClick={startQuiz}>
@@ -122,12 +175,12 @@ const QuizPlay = () => {
             {phase === "active" && current && (
                 <div className="quiz-active-panel">
                     <div className="quiz-progress-row">
-                        <span>Question {index + 1} of {questions.length}</span>
+                        <span>Question {index + 1} of {activeQuestions.length}</span>
                         <div className="quiz-progress-track">
                             <div
                                 className="quiz-progress-fill"
                                 style={{
-                                    width: `${((index + (selected !== null ? 1 : 0)) / questions.length) * 100}%`,
+                                    width: `${((index + (selected !== null ? 1 : 0)) / activeQuestions.length) * 100}%`,
                                     background: meta.color,
                                 }}
                             />
@@ -180,9 +233,17 @@ const QuizPlay = () => {
                             : "Keep practicing — review the explanations below."}
                     </p>
 
+                    {!result.saved && !isAuthenticated && (
+                        <div className="quiz-login-hint quiz-login-hint-result">
+                            This score wasn't saved. <Link to="/login">Login</Link> or{" "}
+                            <Link to="/register">register</Link> to track your quiz history.
+                        </div>
+                    )}
+
                     <div className="quiz-review-list">
-                        {questions.map((q, i) => {
+                        {activeQuestions.map((q, i) => {
                             const a = result.answers[i];
+                            if (!a) return null;
                             return (
                                 <div className="quiz-review-item" key={q.id}>
                                     {a.correct ? (

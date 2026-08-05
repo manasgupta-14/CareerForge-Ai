@@ -1,22 +1,39 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Code2, Trophy, MessagesSquare, ArrowRight } from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
+import { Code2, Trophy, MessagesSquare, ArrowRight, History, LogIn } from "lucide-react";
 
 import { CATEGORY_META, QUIZ_DATA } from "../../data/quizData";
-import { getBestAttempt } from "../../utils/quizStorage";
+import { getBestAttempt, getAllAttempts } from "../../utils/quizStorage";
+import { useAuth } from "../../context/AuthContext";
 import "./QuizHub.css";
+
+const formatDate = (iso) => {
+    try {
+        return new Date(iso).toLocaleDateString(undefined, {
+            day: "numeric",
+            month: "short",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    } catch {
+        return "";
+    }
+};
 
 const QuizHub = () => {
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
     const [bestScores, setBestScores] = useState({});
+    const [history, setHistory] = useState([]);
 
     useEffect(() => {
         const scores = {};
         Object.keys(CATEGORY_META).forEach((key) => {
-            scores[key] = getBestAttempt(key);
+            scores[key] = isAuthenticated ? getBestAttempt(key) : null;
         });
         setBestScores(scores);
-    }, []);
+        setHistory(isAuthenticated ? getAllAttempts().slice(0, 8) : []);
+    }, [isAuthenticated]);
 
     return (
         <div className="quiz-hub-page">
@@ -28,6 +45,48 @@ const QuizHub = () => {
                     through mock interview questions to prepare for the real thing.
                 </p>
             </div>
+
+            {isAuthenticated ? (
+                <div className="quiz-history-block">
+                    <div className="quiz-history-head">
+                        <History size={18} />
+                        <h3>Your Quiz History</h3>
+                    </div>
+
+                    {history.length === 0 ? (
+                        <p className="quiz-history-empty">
+                            No attempts yet — play a quiz below to start tracking your scores.
+                        </p>
+                    ) : (
+                        <div className="quiz-history-list">
+                            {history.map((a) => (
+                                <div className="quiz-history-item" key={a.id}>
+                                    <span
+                                        className="quiz-history-cat"
+                                        style={{
+                                            background: CATEGORY_META[a.category]?.bg,
+                                            color: CATEGORY_META[a.category]?.color,
+                                        }}
+                                    >
+                                        {CATEGORY_META[a.category]?.label || a.category}
+                                    </span>
+                                    <span className="quiz-history-score">
+                                        {a.score}/{a.total}
+                                    </span>
+                                    <span className="quiz-history-date">{formatDate(a.takenAt)}</span>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            ) : (
+                <div className="quiz-history-login-prompt">
+                    <LogIn size={16} />
+                    <span>
+                        <Link to="/login">Login</Link> to see your quiz score history here.
+                    </span>
+                </div>
+            )}
 
             <div className="quiz-cards-container">
                 {Object.values(CATEGORY_META).map((cat) => {

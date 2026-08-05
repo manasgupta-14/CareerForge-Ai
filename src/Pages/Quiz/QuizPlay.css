@@ -30,7 +30,6 @@
 }
 .quiz-not-found h2 { color: #111827; margin-bottom: 8px; }
 
-/* Start panel */
 .quiz-start-panel {
     background: #fff;
     border: 1px solid #e5e7eb;
@@ -65,7 +64,6 @@
     margin-bottom: 22px;
 }
 
-/* Active panel */
 .quiz-active-panel {
     background: #fff;
     border: 1px solid #e5e7eb;
@@ -190,7 +188,6 @@
 }
 .quiz-secondary-btn:hover { border-color: #9ca3af; }
 
-/* Result panel */
 .quiz-result-panel {
     background: #fff;
     border: 1px solid #e5e7eb;
@@ -240,4 +237,25 @@
 
 @media (max-width: 600px) {
     .quiz-play-head { flex-direction: column; }
+}
+
+.quiz-login-hint {
+    font-size: 13.5px;
+    color: #6b7280;
+    margin-top: -6px;
+    margin-bottom: 18px;
+}
+
+.quiz-login-hint a {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.quiz-login-hint-result {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin: -6px 0 18px;
 }
