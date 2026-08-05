@@ -1,6 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+
 import Navbar from "./Components/Navbar/Navbar";
+
+import Login from "./Pages/Auth/Login";
+import Register from "./Pages/Auth/Register";
+import Profile from "./Pages/Profile/Profile";
 
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
@@ -27,110 +34,121 @@ import MockInterview from "./Pages/Quiz/MockInterview";
 
 function App() {
     return (
-        <BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
 
-            <Navbar />
+                <Navbar />
 
-            <Routes>
+                <Routes>
 
-                {/* Home */}
-                <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home />} />
 
-                {/* Jobs */}
-                <Route
-                    path="/jobs/apply-jobs"
-                    element={<Apply_Jobs/>}
-                />
+                    <Route
+                        path="/jobs/apply-jobs"
+                        element={<Apply_Jobs />}
+                    />
 
-                <Route
-                    path="/jobs/internship"
-                    element={<InternshipHome/>}
-                />
+                    <Route
+                        path="/jobs/internship"
+                        element={<InternshipHome />}
+                    />
 
-                <Route
-                    path="/jobs/work-from-home"
-                    element={<Work_From_Home/>}
-                />
+                    <Route
+                        path="/jobs/work-from-home"
+                        element={<Work_From_Home />}
+                    />
 
-                {/* Resume Builder */}
-                <Route
-                    path="/resume-builder/create"
-                    element={<Create />}
-                />
+                    <Route
+                        path="/resume-builder/create"
+                        element={<Create />}
+                    />
 
-                <Route
-                    path="/resume-builder/my-resumes"
-                    element={<MyResumes />}
-                />
+                    <Route
+                        path="/resume-builder/my-resumes"
+                        element={
+                            <ProtectedRoute>
+                                <MyResumes />
+                            </ProtectedRoute>
+                        }
+                    />
 
-                <Route
-                    path="/resume-builder/templates"
-                    element={<Templates />}
-                />
+                    <Route
+                        path="/resume-builder/templates"
+                        element={<Templates />}
+                    />
 
-                <Route
-                    path="/resume-builder/ats-score"
-                    element={<AtsScore />}
-                />
+                    <Route
+                        path="/resume-builder/ats-score"
+                        element={<AtsScore />}
+                    />
 
-                <Route
-                    path="/resume-builder/ai-suggestions"
-                    element={<AiSuggestions />}
-                />
+                    <Route
+                        path="/resume-builder/ai-suggestions"
+                        element={<AiSuggestions />}
+                    />
 
-                <Route
-                    path="/resume-builder/analyzer"
-                    element={<Analyzer />}
-                />
+                    <Route
+                        path="/resume-builder/analyzer"
+                        element={<Analyzer />}
+                    />
 
-                {/* Code Editor */}
-                <Route
-                    path="/code-editor/html-css"
-                    element={<HtmlCssEditor />}
-                />
+                    <Route
+                        path="/code-editor/html-css"
+                        element={<HtmlCssEditor />}
+                    />
 
-                <Route
-                    path="/code-editor/javascript"
-                    element={<JavascriptEditor />}
-                />
+                    <Route
+                        path="/code-editor/javascript"
+                        element={<JavascriptEditor />}
+                    />
 
-                <Route
-                    path="/code-editor/react"
-                    element={<ReactEditor />}
-                />
+                    <Route
+                        path="/code-editor/react"
+                        element={<ReactEditor />}
+                    />
 
-                <Route
-                    path="/code-editor/saved"
-                    element={<SavedCodes />}
-                />
+                    <Route
+                        path="/code-editor/saved"
+                        element={
+                            <ProtectedRoute>
+                                <SavedCodes />
+                            </ProtectedRoute>
+                        }
+                    />
 
-                {/* Quiz */}
-                <Route path="/quiz" element={<QuizHub />} />
+                    <Route path="/quiz" element={<QuizHub />} />
 
-                <Route
-                    path="/quiz/mock-interview"
-                    element={<MockInterview />}
-                />
+                    <Route
+                        path="/quiz/mock-interview"
+                        element={<MockInterview />}
+                    />
 
-                <Route
-                    path="/quiz/:category"
-                    element={<QuizPlay />}
-                />
+                    <Route
+                        path="/quiz/:category"
+                        element={<QuizPlay />}
+                    />
 
-                {/* Other Pages */}
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
 
-                {/* Auth */}
-                <Route path="/login" element={<h1>Login</h1>} />
-                <Route path="/register" element={<h1>Register</h1>} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
 
-                {/* 404 Page */}
-                <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+                    <Route
+                        path="/profile"
+                        element={
+                            <ProtectedRoute>
+                                <Profile />
+                            </ProtectedRoute>
+                        }
+                    />
 
-            </Routes>
+                    <Route path="*" element={<h1>404 - Page Not Found</h1>} />
 
-        </BrowserRouter>
+                </Routes>
+
+            </BrowserRouter>
+        </AuthProvider>
     );
 }
 
