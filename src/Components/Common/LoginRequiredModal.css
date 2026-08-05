@@ -1,0 +1,112 @@
+.login-required-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, .55);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.login-required-modal {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px 28px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
+    animation: loginRequiredPop .25s ease;
+}
+
+@keyframes loginRequiredPop {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.login-required-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: .2s;
+}
+
+.login-required-close:hover {
+    color: #374151;
+}
+
+.login-required-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #eaf1ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.login-required-modal h3 {
+    font-size: 19px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.login-required-modal p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.login-required-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.login-required-btn {
+    flex: 1;
+    padding: 11px 0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.login-required-btn-outline {
+    background: #fff;
+    border: 2px solid #2563eb;
+    color: #2563eb;
+}
+
+.login-required-btn-outline:hover {
+    background: #eaf1ff;
+}
+
+.login-required-btn-solid {
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, .3);
+}
+
+.login-required-btn-solid:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, .4);
+}
