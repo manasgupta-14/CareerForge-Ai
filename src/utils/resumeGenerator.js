@@ -1,8 +1,3 @@
-// Local, rule-based "AI generate" helper.
-// It parses free-form text the user types about themselves and turns it
-// into structured resume fields. It does not call any external AI service —
-// everything runs instantly in the browser.
-
 const EMAIL_RE = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 const PHONE_RE = /(\+?\d[\d\s().-]{7,}\d)/;
 const LINKEDIN_RE = /(linkedin\.com\/[^\s,]+)/i;
@@ -18,7 +13,6 @@ const splitSentences = (text) =>
 
 const guessName = (text) => {
     const firstLine = text.split("\n").map((l) => l.trim()).find(Boolean) || "";
-    // A short first line with 2-4 capitalized-ish words and no @ / digits is likely a name
     const words = firstLine.split(/\s+/);
     if (
         words.length >= 2 &&
@@ -33,7 +27,6 @@ const guessName = (text) => {
 };
 
 const guessSkills = (text) => {
-    // Look for an explicit "skills:" line, else pick common tech/soft-skill tokens.
     const skillsLineMatch = text.match(/skills?\s*[:\-]\s*(.+)/i);
     if (skillsLineMatch) {
         return skillsLineMatch[1]
@@ -57,17 +50,11 @@ const guessSkills = (text) => {
 };
 
 const guessSummarySentence = (sentences) => {
-    // Prefer a sentence that mentions years of experience or a role.
     const withYears = sentences.find((s) => /\d+\+?\s*years?/i.test(s));
     if (withYears) return withYears;
     return sentences[0] || "";
 };
 
-/**
- * Heuristically parses a free-text blob describing the user into a
- * partial resume object (personal info, summary guess, skills, and a
- * single experience/education entry if it can find one).
- */
 export const parseFreeTextToResume = (rawText, targetRole = "") => {
     const text = rawText || "";
     const sentences = splitSentences(text);
@@ -95,7 +82,6 @@ export const parseFreeTextToResume = (rawText, targetRole = "") => {
         certifications: [],
     };
 
-    // Try to find a company + role pattern like "Software Engineer at Google (2021-2023)"
     const roleAtCompany = text.match(
         /([A-Z][A-Za-z .]{2,40})\s+at\s+([A-Z][A-Za-z0-9&.,' ]{2,40})(?:\s*\(?([\d]{4}\s*[-–—]\s*(?:[\d]{4}|present))\)?)?/i
     );
@@ -122,7 +108,6 @@ export const parseFreeTextToResume = (rawText, targetRole = "") => {
         });
     }
 
-    // Try to find a degree pattern like "B.Tech in Computer Science from XYZ University"
     const degreeMatch = text.match(
         /(B\.?Tech|M\.?Tech|Bachelor(?:'s)?|Master(?:'s)?|B\.?Sc|M\.?Sc|MBA|Ph\.?D|Diploma)[^.\n]{0,60}?(?:from|,|-)\s*([A-Z][A-Za-z0-9&.,' ]{3,60})/i
     );
@@ -139,10 +124,6 @@ export const parseFreeTextToResume = (rawText, targetRole = "") => {
 
     return result;
 };
-
-// ---------------------------------------------------------------------
-// Chat Assistant question flow
-// ---------------------------------------------------------------------
 
 export const CHAT_QUESTIONS = [
     { key: "fullName", prompt: "Let's build your resume together. What's your full name?", group: "personal" },
@@ -225,11 +206,6 @@ const parseProjectAnswer = (answer) => {
     };
 };
 
-/**
- * Builds a resume object from the chat assistant's collected answers.
- * `answers` = { fullName, targetRole, email, phone, location, summary,
- *   experienceAnswers: [string], education: string, skills: string, projects: string }
- */
 export const buildResumeFromChat = (answers) => {
     const experience = (answers.experienceAnswers || [])
         .filter((a) => a && !/^no$/i.test(a.trim()))
