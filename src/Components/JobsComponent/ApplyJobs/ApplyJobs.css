@@ -477,3 +477,244 @@ body {
         font-size: 14px;
     }
 }
+
+.jobs-status-row {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+}
+
+.jobs-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #2563eb;
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 9px 18px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+.applied-jobs-panel {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 22px 26px;
+}
+
+.applied-jobs-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2563eb;
+    margin-bottom: 16px;
+}
+
+.applied-jobs-head h3 {
+    font-size: 16px;
+    color: #111827;
+    flex: 1;
+}
+
+.history-clear-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.history-clear-btn:hover {
+    background: #fef2f2;
+}
+
+.history-item-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.history-item-remove:hover {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.applied-jobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.applied-job-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding: 10px 14px;
+    background: #f8fafc;
+    border-radius: 10px;
+    font-size: 13.5px;
+}
+
+.applied-job-title {
+    font-weight: 700;
+    color: #111827;
+}
+
+.applied-job-company {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.applied-job-date {
+    margin-left: auto;
+    color: #6b7280;
+    font-size: 12.5px;
+}
+
+.applied-jobs-login-prompt {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 14px 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.apply-btn.applied {
+    background: #ecfdf5;
+    color: #059669;
+    border: 2px solid #059669;
+    background-image: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: default;
+}
+
+.apply-btn.applied:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.apply-btn:disabled {
+    cursor: not-allowed;
+}
+
+.save-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.save-btn.saved {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.congrats-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: congratsFadeIn 0.2s ease;
+}
+
+.congrats-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 38px 34px;
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    animation: congratsPop 0.25s ease;
+}
+
+.congrats-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: #ecfdf5;
+    color: #059669;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.congrats-card h3 {
+    font-size: 20px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.congrats-card p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.congrats-card p strong {
+    color: #111827;
+}
+
+@keyframes congratsFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes congratsPop {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .applied-job-date {
+        margin-left: 0;
+    }
+}
