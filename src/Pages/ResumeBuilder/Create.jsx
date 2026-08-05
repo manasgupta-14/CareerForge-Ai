@@ -7,6 +7,8 @@ import {
 
 import ResumeForm from "../../Components/ResumeComponent/ResumeForm";
 import ResumePreview from "../../Components/ResumeComponent/ResumePreview";
+import LoginRequiredModal from "../../Components/Common/LoginRequiredModal";
+import { useAuth } from "../../context/AuthContext";
 import {
     emptyResume, getResumeById, saveResume, setActiveResumeId,
 } from "../../utils/resumeStorage";
@@ -23,6 +25,7 @@ const MODES = [
 const TEMPLATE_COUNT = 6;
 
 const Create = () => {
+    const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const editId = searchParams.get("id");
@@ -36,12 +39,11 @@ const Create = () => {
     });
     const [mode, setMode] = useState("manual");
     const [saved, setSaved] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
-    // ---- AI Generate state ----
     const [aiText, setAiText] = useState("");
     const [aiRole, setAiRole] = useState("");
 
-    // ---- Chat Assistant state ----
     const [chatLog, setChatLog] = useState([
         { from: "bot", text: CHAT_QUESTIONS[0].prompt },
     ]);
@@ -59,6 +61,10 @@ const Create = () => {
     }, [resume]);
 
     const handleSave = () => {
+        if (!isAuthenticated) {
+            setShowLoginModal(true);
+            return;
+        }
         const updated = saveResume({ ...resume, title: resume.personal.fullName ? `${resume.personal.fullName}'s Resume` : resume.title });
         setResume(updated);
         setActiveResumeId(updated.id);
@@ -89,7 +95,6 @@ const Create = () => {
         applyGenerated(partial);
     };
 
-    // ---- Chat Assistant logic ----
     const currentQuestion = CHAT_QUESTIONS[chatStep];
 
     const pushBotMessage = (text) => setChatLog((log) => [...log, { from: "bot", text }]);
@@ -106,7 +111,6 @@ const Create = () => {
 
         if (currentQuestion.key === "moreExperience") {
             if (/^no$/i.test(value)) {
-                // move past experience loop to next question after the loop questions
                 const nextIndex = CHAT_QUESTIONS.findIndex((q) => q.key === "education");
                 setChatStep(nextIndex);
                 setChatAnswers(answers);
@@ -115,7 +119,7 @@ const Create = () => {
             }
             answers.experienceAnswers = [...(answers.experienceAnswers || []), value];
             setChatAnswers(answers);
-            setTimeout(() => pushBotMessage(CHAT_QUESTIONS[chatStep].prompt), 200); // ask "more?" again
+            setTimeout(() => pushBotMessage(CHAT_QUESTIONS[chatStep].prompt), 200);
             return;
         }
 
@@ -131,7 +135,7 @@ const Create = () => {
             setChatStep(nextStep);
             setTimeout(() => pushBotMessage(CHAT_QUESTIONS[nextStep].prompt), 200);
         } else {
-            // Done — build resume
+
             const built = buildResumeFromChat(answers);
             setTimeout(() => {
                 pushBotMessage("All set! I've built your resume — switching you to the editor so you can fine-tune it.");
@@ -250,6 +254,13 @@ const Create = () => {
                     </div>
                 </div>
             </div>
+
+            {showLoginModal && (
+                <LoginRequiredModal
+                    message="Login to save this resume to your account."
+                    onCancel={() => setShowLoginModal(false)}
+                />
+            )}
         </div>
     );
 };
