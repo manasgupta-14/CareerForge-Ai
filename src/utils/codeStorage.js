@@ -1,9 +1,18 @@
-const STORAGE_KEY = "code_editor_snippets";
+import { getCurrentUser } from "./authStorage";
 
-// Read all snippets from localStorage
+const BASE_KEY = "code_editor_snippets";
+
+const storageKey = () => {
+    const user = getCurrentUser();
+    return user ? `${BASE_KEY}_${user.id}` : null;
+};
+
 const readAll = () => {
+    const key = storageKey();
+    if (!key) return [];
+
     try {
-        const raw = localStorage.getItem(STORAGE_KEY);
+        const raw = localStorage.getItem(key);
         return raw ? JSON.parse(raw) : [];
     } catch (err) {
         console.error("Failed to read saved snippets:", err);
@@ -11,10 +20,12 @@ const readAll = () => {
     }
 };
 
-// Persist all snippets to localStorage
 const writeAll = (snippets) => {
+    const key = storageKey();
+    if (!key) return false;
+
     try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(snippets));
+        localStorage.setItem(key, JSON.stringify(snippets));
         return true;
     } catch (err) {
         console.error("Failed to save snippets:", err);
@@ -36,11 +47,9 @@ export const getSnippetById = (id) => {
     return readAll().find((s) => s.id === id) || null;
 };
 
-// data shape depends on editor type:
-// html-css -> { html, css }
-// javascript -> { code }
-// react -> { code }
 export const saveSnippet = ({ type, title, data }) => {
+    if (!storageKey()) return null;
+
     const snippets = readAll();
 
     const newSnippet = {
