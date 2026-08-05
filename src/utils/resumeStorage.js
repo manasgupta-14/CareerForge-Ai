@@ -1,5 +1,17 @@
-const STORAGE_KEY = "resume_builder_resumes";
-const ACTIVE_KEY = "resume_builder_active_id";
+import { getCurrentUser } from "./authStorage";
+
+const BASE_KEY = "resume_builder_resumes";
+const BASE_ACTIVE_KEY = "resume_builder_active_id";
+
+const storageKey = () => {
+    const user = getCurrentUser();
+    return user ? `${BASE_KEY}_${user.id}` : null;
+};
+
+const activeStorageKey = () => {
+    const user = getCurrentUser();
+    return user ? `${BASE_ACTIVE_KEY}_${user.id}` : null;
+};
 
 export const emptyResume = () => ({
     id: `resume_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
@@ -25,8 +37,11 @@ export const emptyResume = () => ({
 });
 
 const readAll = () => {
+    const key = storageKey();
+    if (!key) return [];
+
     try {
-        const raw = localStorage.getItem(STORAGE_KEY);
+        const raw = localStorage.getItem(key);
         return raw ? JSON.parse(raw) : [];
     } catch (err) {
         console.error("Failed to read resumes:", err);
@@ -35,8 +50,11 @@ const readAll = () => {
 };
 
 const writeAll = (resumes) => {
+    const key = storageKey();
+    if (!key) return false;
+
     try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(resumes));
+        localStorage.setItem(key, JSON.stringify(resumes));
         return true;
     } catch (err) {
         console.error("Failed to save resumes:", err);
@@ -55,6 +73,8 @@ export const getResumeById = (id) => {
 };
 
 export const saveResume = (resume) => {
+    if (!storageKey()) return resume;
+
     const resumes = readAll();
     const index = resumes.findIndex((r) => r.id === resume.id);
 
@@ -97,16 +117,22 @@ export const duplicateResume = (id) => {
 };
 
 export const setActiveResumeId = (id) => {
+    const key = activeStorageKey();
+    if (!key) return;
+
     try {
-        localStorage.setItem(ACTIVE_KEY, id);
+        localStorage.setItem(key, id);
     } catch (err) {
         console.error("Failed to set active resume:", err);
     }
 };
 
 export const getActiveResumeId = () => {
+    const key = activeStorageKey();
+    if (!key) return null;
+
     try {
-        return localStorage.getItem(ACTIVE_KEY);
+        return localStorage.getItem(key);
     } catch (err) {
         return null;
     }
