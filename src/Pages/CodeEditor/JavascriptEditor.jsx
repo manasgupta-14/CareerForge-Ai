@@ -5,7 +5,9 @@ import Editor from "@monaco-editor/react";
 import EditorToolbar from "../../Components/CodeEditorComponent/EditorToolbar/EditorToolbar";
 import SaveModal from "../../Components/CodeEditorComponent/SaveModal/SaveModal";
 import ConsolePanel from "../../Components/CodeEditorComponent/ConsolePanel/ConsolePanel";
+import LoginRequiredModal from "../../Components/Common/LoginRequiredModal";
 
+import { useAuth } from "../../context/AuthContext";
 import {
     getSnippetById,
     saveSnippet,
@@ -25,8 +27,6 @@ for (let i = 1; i <= 3; i++) {
   console.log("Count:", i);
 }`;
 
-// Runs inside the sandboxed iframe. Overrides console methods
-// to forward messages to the parent window via postMessage.
 const buildRunnerDoc = (userCode) => `
 <html>
 <body>
@@ -64,6 +64,7 @@ const buildRunnerDoc = (userCode) => `
 
 const JavascriptEditor = () => {
 
+    const { isAuthenticated } = useAuth();
     const [searchParams] = useSearchParams();
     const loadId = searchParams.get("load");
 
@@ -71,6 +72,7 @@ const JavascriptEditor = () => {
     const [logs, setLogs] = useState([]);
     const [runKey, setRunKey] = useState(0);
     const [showSaveModal, setShowSaveModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
     const [activeSnippetId, setActiveSnippetId] = useState(null);
     const [activeTitle, setActiveTitle] = useState("");
 
@@ -88,7 +90,6 @@ const JavascriptEditor = () => {
         }
     }, [loadId]);
 
-    // Listen for console messages forwarded from the sandboxed iframe
     useEffect(() => {
         const handleMessage = (event) => {
             if (event.data?.source !== "js-editor") return;
@@ -131,13 +132,21 @@ const JavascriptEditor = () => {
         setShowSaveModal(false);
     };
 
+    const handleSaveClick = () => {
+        if (!isAuthenticated) {
+            setShowLoginModal(true);
+            return;
+        }
+        setShowSaveModal(true);
+    };
+
     return (
         <div className="code-editor-page">
 
             <EditorToolbar
                 label={activeTitle || "JavaScript Editor"}
                 onRun={handleRun}
-                onSave={() => setShowSaveModal(true)}
+                onSave={handleSaveClick}
                 onReset={handleReset}
             />
 
@@ -165,7 +174,6 @@ const JavascriptEditor = () => {
                 <div className="console-pane">
                     <ConsolePanel logs={logs} onClear={() => setLogs([])} />
 
-                    {/* Hidden sandboxed runner, re-mounted on every Run */}
                     <iframe
                         key={runKey}
                         ref={iframeRef}
@@ -183,6 +191,13 @@ const JavascriptEditor = () => {
                     defaultTitle={activeTitle}
                     onCancel={() => setShowSaveModal(false)}
                     onConfirm={handleSaveConfirm}
+                />
+            )}
+
+            {showLoginModal && (
+                <LoginRequiredModal
+                    message="Login to save your code snippets and access them anytime."
+                    onCancel={() => setShowLoginModal(false)}
                 />
             )}
 

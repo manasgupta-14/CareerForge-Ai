@@ -4,7 +4,9 @@ import Editor from "@monaco-editor/react";
 
 import EditorToolbar from "../../Components/CodeEditorComponent/EditorToolbar/EditorToolbar";
 import SaveModal from "../../Components/CodeEditorComponent/SaveModal/SaveModal";
+import LoginRequiredModal from "../../Components/Common/LoginRequiredModal";
 
+import { useAuth } from "../../context/AuthContext";
 import {
     getSnippetById,
     saveSnippet,
@@ -26,8 +28,6 @@ const DEFAULT_REACT = `function App() {
   );
 }`;
 
-// Loads React + ReactDOM + Babel standalone from a CDN and transpiles
-// the user's JSX component in-browser, then renders it into #root.
 const buildRunnerDoc = (userCode) => `
 <html>
 <head>
@@ -62,6 +62,7 @@ const buildRunnerDoc = (userCode) => `
 
 const ReactEditor = () => {
 
+    const { isAuthenticated } = useAuth();
     const [searchParams] = useSearchParams();
     const loadId = searchParams.get("load");
 
@@ -69,6 +70,7 @@ const ReactEditor = () => {
     const [runKey, setRunKey] = useState(1);
     const [error, setError] = useState(null);
     const [showSaveModal, setShowSaveModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
     const [activeSnippetId, setActiveSnippetId] = useState(null);
     const [activeTitle, setActiveTitle] = useState("");
 
@@ -86,7 +88,6 @@ const ReactEditor = () => {
         }
     }, [loadId]);
 
-    // Auto re-render preview after typing pauses
     useEffect(() => {
         if (debounceRef.current) clearTimeout(debounceRef.current);
 
@@ -136,13 +137,21 @@ const ReactEditor = () => {
         setShowSaveModal(false);
     };
 
+    const handleSaveClick = () => {
+        if (!isAuthenticated) {
+            setShowLoginModal(true);
+            return;
+        }
+        setShowSaveModal(true);
+    };
+
     return (
         <div className="code-editor-page">
 
             <EditorToolbar
                 label={activeTitle || "React Editor"}
                 onRun={handleRun}
-                onSave={() => setShowSaveModal(true)}
+                onSave={handleSaveClick}
                 onReset={handleReset}
             />
 
@@ -190,6 +199,13 @@ const ReactEditor = () => {
                     defaultTitle={activeTitle}
                     onCancel={() => setShowSaveModal(false)}
                     onConfirm={handleSaveConfirm}
+                />
+            )}
+
+            {showLoginModal && (
+                <LoginRequiredModal
+                    message="Login to save your code snippets and access them anytime."
+                    onCancel={() => setShowLoginModal(false)}
                 />
             )}
 

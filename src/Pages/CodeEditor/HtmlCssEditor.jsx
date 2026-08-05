@@ -4,7 +4,9 @@ import Editor from "@monaco-editor/react";
 
 import EditorToolbar from "../../Components/CodeEditorComponent/EditorToolbar/EditorToolbar";
 import SaveModal from "../../Components/CodeEditorComponent/SaveModal/SaveModal";
+import LoginRequiredModal from "../../Components/Common/LoginRequiredModal";
 
+import { useAuth } from "../../context/AuthContext";
 import {
     getSnippetById,
     saveSnippet,
@@ -42,12 +44,14 @@ h1 {
 
 const HtmlCssEditor = () => {
 
+    const { isAuthenticated } = useAuth();
     const [searchParams] = useSearchParams();
     const loadId = searchParams.get("load");
 
     const [html, setHtml] = useState(DEFAULT_HTML);
     const [css, setCss] = useState(DEFAULT_CSS);
     const [showSaveModal, setShowSaveModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
     const [activeSnippetId, setActiveSnippetId] = useState(null);
     const [activeTitle, setActiveTitle] = useState("");
     const [activeTab, setActiveTab] = useState("html");
@@ -55,7 +59,6 @@ const HtmlCssEditor = () => {
     const debounceRef = useRef(null);
     const [srcDoc, setSrcDoc] = useState("");
 
-    // Load snippet if ?load=<id> is present
     useEffect(() => {
         if (!loadId) return;
 
@@ -69,7 +72,6 @@ const HtmlCssEditor = () => {
         }
     }, [loadId]);
 
-    // Debounced live preview
     useEffect(() => {
         if (debounceRef.current) clearTimeout(debounceRef.current);
 
@@ -108,12 +110,20 @@ const HtmlCssEditor = () => {
         setShowSaveModal(false);
     };
 
+    const handleSaveClick = () => {
+        if (!isAuthenticated) {
+            setShowLoginModal(true);
+            return;
+        }
+        setShowSaveModal(true);
+    };
+
     return (
         <div className="code-editor-page">
 
             <EditorToolbar
                 label={activeTitle || "HTML / CSS Editor"}
-                onSave={() => setShowSaveModal(true)}
+                onSave={handleSaveClick}
                 onReset={handleReset}
             />
 
@@ -179,6 +189,13 @@ const HtmlCssEditor = () => {
                     defaultTitle={activeTitle}
                     onCancel={() => setShowSaveModal(false)}
                     onConfirm={handleSaveConfirm}
+                />
+            )}
+
+            {showLoginModal && (
+                <LoginRequiredModal
+                    message="Login to save your code snippets and access them anytime."
+                    onCancel={() => setShowLoginModal(false)}
                 />
             )}
 

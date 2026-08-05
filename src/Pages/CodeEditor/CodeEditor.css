@@ -1,7 +1,7 @@
 .code-editor-page {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 78px); /* subtract sticky navbar height */
+    height: calc(100vh - 78px);
     background: #f8fafc;
 }
 
@@ -97,6 +97,7 @@
 }
 
 @media (max-width: 900px) {
+
     .code-editor-body.split-2,
     .code-editor-body.split-3 {
         grid-template-columns: 1fr;
