@@ -28,17 +28,17 @@ const Footer = () => {
 
                     <h3>AI Tools</h3>
 
-                    <Link to="/resume-builder">
-                        Resume Builder
-                    </Link>
+                    <span className="footer-link-disabled">
+                        Resume Builder <em className="coming-soon-tag">Coming Soon</em>
+                    </span>
 
-                    <Link to="/resume-builder/ats-score">
-                        ATS Score
-                    </Link>
+                    <span className="footer-link-disabled">
+                        ATS Score <em className="coming-soon-tag">Coming Soon</em>
+                    </span>
 
-                    <Link to="/resume-builder/analyzer">
-                        Resume Analyzer
-                    </Link>
+                    <span className="footer-link-disabled">
+                        Resume Analyzer <em className="coming-soon-tag">Coming Soon</em>
+                    </span>
 
                     <Link to="/quiz">
                         Interview Quiz

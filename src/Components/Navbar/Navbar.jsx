@@ -224,49 +224,35 @@ const Navbar = () => {
 
                             <div className="dropdown-menu">
 
-                                <NavLink
-                                    to="/resume-builder/create"
-                                    onClick={closeMenu}
-                                >
+                                <span className="dropdown-item-disabled">
                                     Create Resume
-                                </NavLink>
+                                    <em className="coming-soon-tag">Coming Soon</em>
+                                </span>
 
-                                {isAuthenticated && (
-                                    <NavLink
-                                        to="/resume-builder/my-resumes"
-                                        onClick={closeMenu}
-                                    >
-                                        My Resumes
-                                    </NavLink>
-                                )}
+                                <span className="dropdown-item-disabled">
+                                    My Resumes
+                                    <em className="coming-soon-tag">Coming Soon</em>
+                                </span>
 
-                                <NavLink
-                                    to="/resume-builder/templates"
-                                    onClick={closeMenu}
-                                >
+                                <span className="dropdown-item-disabled">
                                     Resume Templates
-                                </NavLink>
+                                    <em className="coming-soon-tag">Coming Soon</em>
+                                </span>
 
-                                <NavLink
-                                    to="/resume-builder/ats-score"
-                                    onClick={closeMenu}
-                                >
+                                <span className="dropdown-item-disabled">
                                     ATS Score
-                                </NavLink>
+                                    <em className="coming-soon-tag">Coming Soon</em>
+                                </span>
 
-                                <NavLink
-                                    to="/resume-builder/ai-suggestions"
-                                    onClick={closeMenu}
-                                >
+                                <span className="dropdown-item-disabled">
                                     AI Suggestions
-                                </NavLink>
+                                    <em className="coming-soon-tag">Coming Soon</em>
+                                </span>
 
-                                <NavLink
-                                    to="/resume-builder/analyzer"
-                                    onClick={closeMenu}
-                                >
+                                <span className="dropdown-item-disabled">
                                     Resume Analyzer
-                                </NavLink>
+                                    <em className="coming-soon-tag">Coming Soon</em>
+                                </span>
 
                             </div>
 
@@ -469,11 +455,10 @@ const Navbar = () => {
                                     My Profile
                                 </Link>
 
-                                {isAuthenticated && (
-                                    <Link to="/resume-builder/my-resumes" className="profile-dropdown-link">
-                                        My Resumes
-                                    </Link>
-                                )}
+                                <span className="profile-dropdown-link dropdown-item-disabled">
+                                    My Resumes
+                                    <em className="coming-soon-tag">Coming Soon</em>
+                                </span>
 
                                 <Link to="/code-editor/saved" className="profile-dropdown-link">
                                     Saved Codes
