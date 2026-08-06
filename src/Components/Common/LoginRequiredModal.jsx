@@ -40,7 +40,7 @@ const LoginRequiredModal = ({ message, onCancel }) => {
                     </button>
                     <button
                         className="login-required-btn login-required-btn-solid"
-                        onClick={() => goTo("/home")}
+                        onClick={() => goTo("/login")}
                         type="button"
                     >
                         Login
