@@ -2,7 +2,6 @@ import { Trash2 } from "lucide-react";
 
 import "./ConsolePanel.css";
 
-// logs: [{ type: 'log' | 'error' | 'warn', message: string }]
 const ConsolePanel = ({ logs, onClear }) => {
 
     return (
