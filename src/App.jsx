@@ -16,13 +16,6 @@ import Apply_Jobs from "./Pages/Jobs/Apply_Jobs";
 import Work_From_Home from "./Pages/Jobs/Work_From_Home";
 import InternshipHome from "./Pages/Jobs/InternshipHome";
 
-import Create from "./Pages/ResumeBuilder/Create";
-import MyResumes from "./Pages/ResumeBuilder/MyResumes";
-import Templates from "./Pages/ResumeBuilder/Templates";
-import AtsScore from "./Pages/ResumeBuilder/AtsScore";
-import AiSuggestions from "./Pages/ResumeBuilder/AiSuggestions";
-import Analyzer from "./Pages/ResumeBuilder/Analyzer";
-
 import HtmlCssEditor from "./Pages/CodeEditor/HtmlCssEditor";
 import JavascriptEditor from "./Pages/CodeEditor/JavascriptEditor";
 import ReactEditor from "./Pages/CodeEditor/ReactEditor";
@@ -56,40 +49,6 @@ function App() {
                     <Route
                         path="/jobs/work-from-home"
                         element={<Work_From_Home />}
-                    />
-
-                    <Route
-                        path="/resume-builder/create"
-                        element={<Create />}
-                    />
-
-                    <Route
-                        path="/resume-builder/my-resumes"
-                        element={
-                            <ProtectedRoute>
-                                <MyResumes />
-                            </ProtectedRoute>
-                        }
-                    />
-
-                    <Route
-                        path="/resume-builder/templates"
-                        element={<Templates />}
-                    />
-
-                    <Route
-                        path="/resume-builder/ats-score"
-                        element={<AtsScore />}
-                    />
-
-                    <Route
-                        path="/resume-builder/ai-suggestions"
-                        element={<AiSuggestions />}
-                    />
-
-                    <Route
-                        path="/resume-builder/analyzer"
-                        element={<Analyzer />}
                     />
 
                     <Route
